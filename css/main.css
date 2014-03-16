@@ -39,19 +39,18 @@ div#top-sections-container {
 /* Header
 ============================================================================ */
 
-header ul {
+#nav {
 	list-style: none;
 	margin: 0px auto;
 	padding: 0px;
-	width: 100%;
 }
 
-	header li {
+	#nav li {
 		display: block;
 		float: left;
 	}
 
-		header li a {
+		#nav li a {
 			color: #4480b3;
 			display: inline-block;
 			font: normal 14px/68px 'Avenir Heavy', 'Helvetica', sans-serif;
@@ -59,30 +58,50 @@ header ul {
 			text-transform: uppercase;
 		}
 
-			header li.selected a {
+			#nav li.selected a {
 				color: #c6ddf1;
 			}
 
-			header li a.home { width: 90px; }
-			header li a.about-us { width: 115px; }
-			header li a.our-people { width: 130px; }
-			header li a.our-work { width: 120px; }
-			header li a.outreach-and-impacts { width: 195px; }
-			header li a.events-and-programs { width: 190px; }
-			header li a.news { width: 85px; }
-			header li a.contact { width: 90px; }
+			#nav li a.home { width: 90px; }
+			#nav li a.about-us { width: 115px; }
+			#nav li a.our-people { width: 130px; }
+			#nav li a.our-work { width: 120px; }
+			#nav li a.outreach-and-impacts { width: 195px; }
+			#nav li a.events-and-programs { width: 190px; }
+			#nav li a.news { width: 85px; }
+			#nav li a.contact { width: 90px; }
 
 			@media only screen and (min-width: 768px) and (max-width: 1040px)  {
-				header li a { font-size: 12px; }
-				header li a.home { width: 56px; }
-				header li a.about-us { width: 81px; }
-				header li a.our-people { width: 96px; }
-				header li a.our-work { width: 86px; }
-				header li a.outreach-and-impacts { width: 161px; }
-				header li a.events-and-programs { width: 156px; }
-				header li a.news { width: 51px; }
-				header li a.contact { width: 56px; }
+				#nav li a { font-size: 12px; }
+				#nav li a.home { width: 56px; }
+				#nav li a.about-us { width: 81px; }
+				#nav li a.our-people { width: 96px; }
+				#nav li a.our-work { width: 86px; }
+				#nav li a.outreach-and-impacts { width: 161px; }
+				#nav li a.events-and-programs { width: 156px; }
+				#nav li a.news { width: 51px; }
+				#nav li a.contact { width: 56px; }
 			}
+
+			@media only screen and (max-width: 768px)  {
+				#nav { display: none; }
+			}
+
+#nav-mobile {
+	display: none;
+	margin: 0px auto;
+	padding: 20px 0px 0px 0px;
+	width: 200px;
+}
+
+	#nav-mobile select {
+		width: 200px;
+	}
+
+	@media only screen and (max-width: 768px)  {
+		header { background: rgba(3, 16, 35, 0.20); border-bottom: 1px solid #224778; }
+		#nav-mobile { display: block; }
+	}
 
 
 /* Content
