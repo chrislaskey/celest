@@ -17,6 +17,19 @@ a {
 }
 
 
+/* Structure
+============================================================================ */
+
+div#top-sections-container {
+	background: #071f41 url('../images/background-pattern-with-background-color.gif') top center repeat;
+}
+
+	div#top-sections {
+		background: url('../images/background-radial-60-percent-opacity.png') top center no-repeat;
+		padding: 0px 0px 60px 0px;
+	}
+
+
 /* Content
 ============================================================================ */
 
