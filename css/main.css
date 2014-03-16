@@ -146,6 +146,13 @@ div#logo-subheader {
 		font: 20px/23px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
 	}
 
+	@media only screen and (min-width: 768px) and (max-width: 1040px)  {
+		div#logo-subheader { width: 520px; }
+		span#subheader-celest { font-size: 15px; line-height: 16px; }
+		span#subheader-nsf { font-size: 15px; line-height: 15px; }
+	}
+
+
 /* Content
 ============================================================================ */
 
