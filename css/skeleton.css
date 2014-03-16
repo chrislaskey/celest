@@ -1,16 +1,17 @@
 /*
-* Skeleton V1.2
+* Skeleton V1.2.1
 * Copyright 2011, Dave Gamache
 * www.getskeleton.com
 * Free to use under the MIT license.
 * http://www.opensource.org/licenses/mit-license.php
-* 6/20/2012
+* 03/14/2014 by Chris Laskey
+* Expanded 960 grid to 1040
 */
 
 
 /* Table of Contents
 ==================================================
-    #Base 960 Grid
+    #Base 1040 Grid
     #Tablet (Portrait)
     #Mobile (Portrait)
     #Mobile (Landscape)
@@ -18,10 +19,10 @@
 
 
 
-/* #Base 960 Grid
+/* #Base 1040 Grid
 ================================================== */
 
-    .container                                  { position: relative; width: 960px; margin: 0 auto; padding: 0; }
+    .container                                  { position: relative; width: 1040px; margin: 0 auto; padding: 0; }
     .container .column,
     .container .columns                         { float: left; display: inline; margin-left: 10px; margin-right: 10px; }
     .row                                        { margin-bottom: 20px; }
@@ -32,42 +33,42 @@
 
     /* Base Grid */
     .container .one.column,
-    .container .one.columns                     { width: 40px;  }
-    .container .two.columns                     { width: 100px; }
-    .container .three.columns                   { width: 160px; }
-    .container .four.columns                    { width: 220px; }
-    .container .five.columns                    { width: 280px; }
-    .container .six.columns                     { width: 340px; }
-    .container .seven.columns                   { width: 400px; }
-    .container .eight.columns                   { width: 460px; }
-    .container .nine.columns                    { width: 520px; }
-    .container .ten.columns                     { width: 580px; }
-    .container .eleven.columns                  { width: 640px; }
-    .container .twelve.columns                  { width: 700px; }
-    .container .thirteen.columns                { width: 760px; }
-    .container .fourteen.columns                { width: 820px; }
-    .container .fifteen.columns                 { width: 880px; }
-    .container .sixteen.columns                 { width: 940px; }
+    .container .one.columns                     { width: 45px;  }
+    .container .two.columns                     { width: 110px; }
+    .container .three.columns                   { width: 175px; }
+    .container .four.columns                    { width: 240px; }
+    .container .five.columns                    { width: 305px; }
+    .container .six.columns                     { width: 370px; }
+    .container .seven.columns                   { width: 435px; }
+    .container .eight.columns                   { width: 500px; }
+    .container .nine.columns                    { width: 565px; }
+    .container .ten.columns                     { width: 630px; }
+    .container .eleven.columns                  { width: 695px; }
+    .container .twelve.columns                  { width: 760px; }
+    .container .thirteen.columns                { width: 825px; }
+    .container .fourteen.columns                { width: 890px; }
+    .container .fifteen.columns                 { width: 955px; }
+    .container .sixteen.columns                 { width: 1020px; }
 
-    .container .one-third.column                { width: 300px; }
-    .container .two-thirds.column               { width: 620px; }
+    .container .one-third.column                { width: 320px; }
+    .container .two-thirds.column               { width: 660px; }
 
     /* Offsets */
-    .container .offset-by-one                   { padding-left: 60px;  }
-    .container .offset-by-two                   { padding-left: 120px; }
-    .container .offset-by-three                 { padding-left: 180px; }
-    .container .offset-by-four                  { padding-left: 240px; }
-    .container .offset-by-five                  { padding-left: 300px; }
-    .container .offset-by-six                   { padding-left: 360px; }
-    .container .offset-by-seven                 { padding-left: 420px; }
-    .container .offset-by-eight                 { padding-left: 480px; }
-    .container .offset-by-nine                  { padding-left: 540px; }
-    .container .offset-by-ten                   { padding-left: 600px; }
-    .container .offset-by-eleven                { padding-left: 660px; }
-    .container .offset-by-twelve                { padding-left: 720px; }
-    .container .offset-by-thirteen              { padding-left: 780px; }
-    .container .offset-by-fourteen              { padding-left: 840px; }
-    .container .offset-by-fifteen               { padding-left: 900px; }
+    .container .offset-by-one                   { padding-left: 65px;  }
+    .container .offset-by-two                   { padding-left: 130px; }
+    .container .offset-by-three                 { padding-left: 195px; }
+    .container .offset-by-four                  { padding-left: 260px; }
+    .container .offset-by-five                  { padding-left: 325px; }
+    .container .offset-by-six                   { padding-left: 390px; }
+    .container .offset-by-seven                 { padding-left: 455px; }
+    .container .offset-by-eight                 { padding-left: 520px; }
+    .container .offset-by-nine                  { padding-left: 585px; }
+    .container .offset-by-ten                   { padding-left: 650px; }
+    .container .offset-by-eleven                { padding-left: 715px; }
+    .container .offset-by-twelve                { padding-left: 780px; }
+    .container .offset-by-thirteen              { padding-left: 845px; }
+    .container .offset-by-fourteen              { padding-left: 910px; }
+    .container .offset-by-fifteen               { padding-left: 975px; }
 
 
 
@@ -76,7 +77,7 @@
 
     /* Note: Design for a width of 768px */
 
-    @media only screen and (min-width: 768px) and (max-width: 959px) {
+    @media only screen and (min-width: 768px) and (max-width: 1040px) {
         .container                                  { width: 768px; }
         .container .column,
         .container .columns                         { margin-left: 10px; margin-right: 10px;  }
