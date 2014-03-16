@@ -152,6 +152,12 @@ div#logo-subheader {
 		span#subheader-nsf { font-size: 15px; line-height: 15px; }
 	}
 
+	@media only screen and (max-width: 768px)  {
+		div#logo-content { padding: 42px 0px 40px 0px; }
+		a#logo { width: 100%; }
+		div#logo-subheader { display: none; }
+	}
+
 
 /* Content
 ============================================================================ */
