@@ -29,6 +29,13 @@ div#top-sections-container {
 		padding: 0px 0px 60px 0px;
 	}
 
+		header {
+			background: rgba(3, 16, 35, 0.12);
+			height: 68px;
+			width: 100%;
+		}
+
+
 
 /* Content
 ============================================================================ */
