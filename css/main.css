@@ -9,7 +9,7 @@ html, body {
 
 body {
 	background: #000f23;
-	font: 19px/25px 'Avenir Book', 'Helvetica', sans-serif;
+	font: 19px/25px 'Avenir Book', 'Avenir', 'Helvetica', sans-serif;
 }
 
 a {
@@ -63,7 +63,7 @@ div#top-sections-container {
 		#nav li a {
 			color: #4480b3;
 			display: inline-block;
-			font: normal 14px/68px 'Avenir Heavy', 'Helvetica', sans-serif;
+			font: normal 14px/68px 'Avenir Heavy', 'Avenir', 'Helvetica', sans-serif;
 			text-decoration: none;
 			text-transform: uppercase;
 		}
@@ -126,6 +126,25 @@ a#logo {
 	width: 224px;
 }
 
+div#logo-subheader {
+	float: left;
+	height: 48px;
+	margin: 4px 0px 7px 16px;
+	text-shadow: 2px 2px 1px #0c2952;
+	width: 800px;
+}
+
+	span#subheader-celest {
+		color: #98c0e2;
+		display: inline-block;
+		font: 23px/23px 'Avenir Medium', 'Avenir', 'Helvetica', sans-serif;
+	}
+
+	span#subheader-nsf {
+		color: #5f9acc;
+		display: inline-block;
+		font: 20px/23px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
+	}
 
 /* Content
 ============================================================================ */
