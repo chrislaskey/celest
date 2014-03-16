@@ -65,7 +65,6 @@ div#top-sections-container {
 			}
 
 
-
 /* Header
 ============================================================================ */
 
@@ -177,6 +176,40 @@ div#logo-subheader {
 		a#logo { width: 100%; }
 		div#logo-subheader { display: none; }
 	}
+
+
+/* Sidebar
+============================================================================ */
+
+section#sidebar h3 {
+	color: #2e3a4a;
+	letter-spacing: 3px;
+	margin: 0px 40px 60px 40px;
+	font: 16px/16px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
+	text-transform: uppercase;
+}
+
+ul#sidenav  {
+	font: 16px/20px 'Avenir Medium', 'Avenir', 'Helvetica', sans-serif;
+	list-style: none;
+	margin: 0px 15px 60px 40px;
+	padding: 0px;
+}
+
+	ul#sidenav li {
+		border-bottom: 1px solid #e3e3e3;
+	}
+
+		ul#sidenav li a {
+			color: #556882;
+			display: block;
+			padding: 10px 0px 10px 0px;
+		}
+
+			ul#sidenav li.select a {
+				color: #2e3a4a;
+			}
+
 
 
 /* Content
