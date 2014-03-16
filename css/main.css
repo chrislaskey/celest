@@ -35,27 +35,42 @@ div#top-sections-container {
 			width: 100%;
 		}
 
-			header ul {
-				list-style: none;
-				margin: 0px auto;
-				padding: 0px;
-				width: 100%;
+
+/* Header
+============================================================================ */
+
+header ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	width: 100%;
+}
+
+	header li {
+		display: block;
+		float: left;
+	}
+
+		header li a {
+			color: #4480b3;
+			display: inline-block;
+			font: normal 14px/68px 'Avenir Heavy', 'Helvetica', sans-serif;
+			text-decoration: none;
+			text-transform: uppercase;
+		}
+
+			header li.selected a {
+				color: #c6ddf1;
 			}
 
-				header li {
-					display: block;
-					float: left;
-				}
-
-				header li a {
-					color: #4480b3;
-					display: inline-block;
-					font: normal 14px/68px 'Avenir Heavy', 'Helvetica', sans-serif;
-					text-decoration: none;
-					text-transform: uppercase;
-				}
-
-
+			header li a.home { width: 90px; }
+			header li a.about-us { width: 115px; }
+			header li a.our-people { width: 130px; }
+			header li a.our-work { width: 120px; }
+			header li a.outreach-and-impacts { width: 195px; }
+			header li a.events-and-programs { width: 190px; }
+			header li a.news { width: 85px; }
+			header li a.contact { width: 90px; }
 
 /* Content
 ============================================================================ */
