@@ -51,6 +51,20 @@ div#top-sections-container {
 		padding: 60px 0px 0px 0px;
 	}
 
+		section#sidebar {
+
+		}
+
+		section#content-container {
+
+		}
+
+			section#content {
+				color: #32435b;
+				margin: 0px 15px 0px 15px;
+			}
+
+
 
 /* Header
 ============================================================================ */
