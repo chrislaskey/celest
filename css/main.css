@@ -1,0 +1,13 @@
+/* Universals
+============================================================================ */
+
+html, body {
+	margin: 0px;
+	padding: 0px;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	background: #000f23;
+	font: 19px/25px 'Avenir Book', 'Helvetica', sans-serif;
+}
