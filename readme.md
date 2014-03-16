@@ -4,6 +4,8 @@ About
 The front-end for the [CELEST](http://celest.bu.edu) website. Custom design and
 front-end code, wrapped up as a WordPress theme.
 
+![Front-end Design](design.gif)
+
 
 License
 ================================================================================
