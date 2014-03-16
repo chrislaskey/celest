@@ -35,6 +35,26 @@ div#top-sections-container {
 			width: 100%;
 		}
 
+			header ul {
+				list-style: none;
+				margin: 0px auto;
+				padding: 0px;
+				width: 100%;
+			}
+
+				header li {
+					display: block;
+					float: left;
+				}
+
+				header li a {
+					color: #4480b3;
+					display: inline-block;
+					font: normal 14px/68px 'Avenir Heavy', 'Helvetica', sans-serif;
+					text-decoration: none;
+					text-transform: uppercase;
+				}
+
 
 
 /* Content
