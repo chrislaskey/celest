@@ -35,6 +35,16 @@ div#top-sections-container {
 			width: 100%;
 		}
 
+		section#logo-section {
+
+		}
+
+			div#logo-content {
+				height: 59px;
+				margin: 0px auto;
+				padding: 62px 0px 59px 0px;
+			}
+
 
 /* Header
 ============================================================================ */
