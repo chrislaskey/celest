@@ -45,6 +45,12 @@ div#top-sections-container {
 				padding: 62px 0px 59px 0px;
 			}
 
+	section#main {
+		background: #fff;
+		border-radius: 2px;
+		padding: 60px 0px 0px 0px;
+	}
+
 
 /* Header
 ============================================================================ */
