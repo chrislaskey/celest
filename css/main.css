@@ -114,6 +114,19 @@ div#top-sections-container {
 	}
 
 
+/* Logo
+============================================================================ */
+
+a#logo {
+	background: url('../images/celest-logo.png') center center no-repeat;
+	display: block;
+	float: left;
+	height: 59px;
+	text-indent: -5000px;
+	width: 224px;
+}
+
+
 /* Content
 ============================================================================ */
 
