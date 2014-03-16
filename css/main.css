@@ -72,6 +72,19 @@ header ul {
 			header li a.news { width: 85px; }
 			header li a.contact { width: 90px; }
 
+			@media only screen and (min-width: 768px) and (max-width: 1040px)  {
+				header li a { font-size: 12px; }
+				header li a.home { width: 56px; }
+				header li a.about-us { width: 81px; }
+				header li a.our-people { width: 96px; }
+				header li a.our-work { width: 86px; }
+				header li a.outreach-and-impacts { width: 161px; }
+				header li a.events-and-programs { width: 156px; }
+				header li a.news { width: 51px; }
+				header li a.contact { width: 56px; }
+			}
+
+
 /* Content
 ============================================================================ */
 
