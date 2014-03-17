@@ -272,6 +272,16 @@ section#news-footer-articles {
 	section#news-footer-articles article:first-child { margin-left: 0px; }
 	section#news-footer-articles article:last-child { margin-right: 0px; }
 
+		@media only screen and (min-width: 768px) and (max-width: 1040px)  {
+			section#news-footer-articles { margin: 0px 40px; }
+
+			section#news-footer-articles article {
+				margin-left: 36px;
+				margin-right: 36px;
+				width: 180px;
+			}
+		}
+
 		section#news-footer-articles span.news-section {
 			color: #0d537f;
 			display: block;
@@ -288,7 +298,7 @@ section#news-footer-articles {
 		}
 
 			section#news-footer-articles a.news-title:hover {
-				text-decoration: underline
+				text-decoration: underline;
 			}
 
 		section#news-footer-articles span.news-description {
