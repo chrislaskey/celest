@@ -70,6 +70,12 @@ div#top-sections-container {
 		padding: 30px 0px;
 	}
 
+	footer {
+		background: #000f23;
+		border-top: 1px solid #092041;
+		padding: 60px 0px 50px 0px;
+	}
+
 
 /* Header
 ============================================================================ */
@@ -258,6 +264,7 @@ section#content a {
 
 /* News Footer
 ============================================================================ */
+
 section#news-footer-articles {
 	margin: 0px 40px;
 }
@@ -312,3 +319,19 @@ section#news-footer-articles {
 			font: 14px/20px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
 		}
 
+
+/* Footer
+============================================================================ */
+
+a#nsf-footer {
+	background: url('../images/footer-nsf.jpg') top left no-repeat;
+	color: #eee;
+	display: block;
+	font: 24px/67px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
+	height: 67px;
+	padding-left: 245px;
+}
+
+	a#nsf-footer span.highlight {
+		font-family: 'Avenir Heavy', 'Avenir', 'Helvetica', sans-serif;
+	}
