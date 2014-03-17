@@ -269,3 +269,31 @@ section#news-footer-articles {
 		width: 240px;
 	}
 
+	section#news-footer-articles article:first-child { margin-left: 0px; }
+	section#news-footer-articles article:last-child { margin-right: 0px; }
+
+		section#news-footer-articles span.news-section {
+			color: #0d537f;
+			display: block;
+			font: 12px/12px 'Avenir Heavy', 'Avenir', 'Helvetica', sans-serif;
+			margin: 0px 0px 20px 0px;
+			text-transform: uppercase;
+		}
+
+		section#news-footer-articles a.news-title {
+			color: #029eff;
+			display: block;
+			font: 16px/20px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
+			margin: 0px 0px 20px 0px;
+		}
+
+			section#news-footer-articles a.news-title:hover {
+				text-decoration: underline
+			}
+
+		section#news-footer-articles span.news-description {
+			color: #1d679f;
+			display: block;
+			font: 14px/20px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
+		}
+
