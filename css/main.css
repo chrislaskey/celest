@@ -1,3 +1,32 @@
+/* Fonts
+============================================================================ */
+
+@font-face {
+  font-family: 'Avenir Light';
+  src: url('../fonts/AvenirLTStd-Light.woff') format('woff'), url('../fonts/AvenirLTStd-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Avenir Book';
+  src: url('../fonts/AvenirLTStd-Book.woff') format('woff'), url('../fonts/AvenirLTStd-Book.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Avenir Roman';
+  src: url('../fonts/AvenirLTStd-Roman.woff') format('woff'), url('../fonts/AvenirLTStd-Roman.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Avenir Medium';
+  src: url('../fonts/AvenirLTStd-Medium.woff') format('woff'), url('../fonts/AvenirLTStd-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Avenir Heavy';
+  src: url('../fonts/AvenirLTStd-Heavy.woff') format('woff'), url('../fonts/AvenirLTStd-Heavy.ttf') format('truetype');
+}
+
+
 /* Universals
 ============================================================================ */
 
