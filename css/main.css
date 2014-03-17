@@ -254,3 +254,18 @@ section#content p {
 section#content a {
 	text-decoration: underline;
 }
+
+
+/* News Footer
+============================================================================ */
+section#news-footer-articles {
+	margin: 0px 40px;
+}
+
+	section#news-footer-articles article {
+		margin-left: 60px;
+		margin-right: 60px;
+		padding: 20px 0px;
+		width: 240px;
+	}
+
