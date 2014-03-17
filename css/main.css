@@ -336,6 +336,10 @@ a#nsf-footer {
 		font-family: 'Avenir Heavy', 'Avenir', 'Helvetica', sans-serif;
 	}
 
+	@media only screen and (min-width: 768px) and (max-width: 1040px)  {
+		a#nsf-footer { font-size: 24px; padding-left: 40px; }
+	}
+
 footer .universities {
 	color: #2492d7;
 	font: 13px/16px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
@@ -349,4 +353,3 @@ footer .universities {
 		footer .universities a: hover {
 			text-decoration: underline;
 		}
-
