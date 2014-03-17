@@ -211,10 +211,27 @@ ul#sidenav  {
 			}
 
 
-
 /* Content
 ============================================================================ */
 
-#content a {
+section#content h1 {
+	color: #4a9ed3;
+	font: 40px/40px 'Avenir Light', 'Avenir', 'Helvetica', sans-serif;
+	margin: -2px 0px 46px 0px;
+}
+
+section#content h2 {
+	color: #0b79be;
+	font: 24px/24px 'Avenir Book', 'Avenir', 'Helvetica', sans-serif;
+	margin: 46px 0px 1em 0px;
+}
+
+section#content p {
+	font: 16px/23px 'Avenir Book', 'Avenir', 'Helvetica', sans-serif;
+	margin: 0px 0px 1.5em 0px;
+}
+
+section#content a {
 	text-decoration: underline;
 }
+
