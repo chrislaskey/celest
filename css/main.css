@@ -340,6 +340,11 @@ a#nsf-footer {
 		a#nsf-footer { font-size: 24px; padding-left: 40px; }
 	}
 
+	@media only screen and (max-width: 768px)  {
+		a#nsf-footer { font-size: 18px; line-height: 33px; padding-left: 40px; }
+		a#nsf-footer span.highlight { display: block; }
+	}
+
 footer .universities {
 	color: #2492d7;
 	font: 13px/16px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
