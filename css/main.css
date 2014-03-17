@@ -282,6 +282,11 @@ section#news-footer-articles {
 			}
 		}
 
+		@media only screen and (max-width: 768px)  {
+			section#news-footer-articles { margin: 0px; }
+			section#news-footer-articles article { margin-left: 0px; margin-right: 0px; width: 100%; }
+		}
+
 		section#news-footer-articles span.news-section {
 			color: #0d537f;
 			display: block;
