@@ -589,3 +589,159 @@
 
     }
 
+
+// Publication functions
+
+    function create_book_publication($pub){
+
+        if( $pub->custom != NULL ){
+
+            return $pub->custom;
+
+        }else{
+
+            $entity_filter = array('authors', 'article_title', 'editors', 'title', 'pages', 'publisher');
+            foreach( $pub as $key => $val ){
+                if( in_array($key, $entity_filter) ){
+                    $val = trim($val);
+                    $val = htmlentities($val, ENT_COMPAT, 'UTF-8');
+                    $pub->$key = $val;
+                }
+            }unset($key, $val);
+
+            if( $pub->authors == NULL ){ $authors = ''; }
+            else{
+                $authors = '<span class="publication_author">'.$pub->authors.'</span>';
+            }
+
+            if( $pub->year == NULL ){ $year = ''; }
+            else{
+                $year = '<span class="publication_year">'.$pub->year.'</span>';
+            }
+
+            if( $pub->article_title == NULL ){ $article_title = ''; }
+            else{
+                $punctuation = ( has_punctuation($pub->article_title) ) ? ' ' : '. ';
+                $article_title = '<span class="publication_article_title">'. $pub->article_title .'</span>'.$punctuation;
+            }
+
+            //Get Editors and Publication Title
+            if( $pub->title == NULL && $pub->editors == NULL ){ $publication = ''; }
+            else{
+                //Get Pieces
+                $eds = ($pub->multiple_editors == 1 ) ? ' (Eds.)' : ' (Ed.)';
+                $editors_punctuation = ($pub->title != NULL) ? ', ' : '';
+                $editors = ( $pub->editors != NULL ) ? '<span class="publication_editors">'. $pub->editors. ' '. $eds. '</span>'. $editors_punctuation : '';
+                $pubtitle = ($pub->title != '' ) ? '<span class="publication_title"><strong>'. $pub->title .'</strong></span>' : '';
+                $publication = 'In ' . $editors . $pubtitle;
+                unset($eds, $editors, $pubtitle);
+            }
+
+            //Determine if "in press" should be used based on Book vs. Book Title, then by Year
+            if( isset($pub->is_author) && $pub->is_author != 1 ){
+                $show_in_press = ($pub->year < (date('Y', @mktime())-1) ) ? false : true;
+            }else{ $show_in_press = false; }
+
+            //Get Publisher
+            if( $pub->city != NULL && $pub->publisher != NULL && $pub->pages == NULL ){
+
+                $in_press = ($show_in_press === true) ? ', in press.' : '.';
+                $publisher = '<span class="publication_city">'. $pub->city .'</span>: <span class="publication_publisher">'. $pub->publisher .'</span>'. $in_press;
+
+            }elseif( $pub->city == NULL && $pub->publisher != NULL && $pub->pages == NULL ){
+
+                $in_press = ($show_in_press === true) ? ', in press.' : '.';
+                $publisher = '<span class="publication_publisher">'. $pub->publisher .'</span>'. $in_press;
+
+            }elseif( $pub->city == NULL && $pub->publisher != NULL && $pub->pages != NULL ){
+
+                $publisher = '<span class="publication_publisher">'. $pub->publisher .'</span>, <span class="publication_pages">pp.'. $pub->pages .'</span>.';
+
+            }elseif( $pub->city == NULL && $pub->publisher == NULL && $pub->pages != NULL ){
+
+                $publisher = '<span class="publication_pages">pp.'. $pub->pages .'</span>.';
+
+            }elseif( $pub->city != NULL && $pub->publisher != NULL && $pub->pages != NULL ){
+
+                $publisher = '<span class="publication_city">'. $pub->city .'</span>: <span class="publication_publisher">'. $pub->publisher .'</span>, <span class="publication_pages">pp.'. $pub->pages .'</span>.';
+
+            }else{
+
+                $publisher = ($show_in_press === true) ? 'In press.' : '';
+
+            }
+
+            //Get Editors and Publication Title Punctuation
+            if( $publication != NULL ){
+                $publication .= ( $publisher == 'In press.' ) ? ', ' : '. ';
+            }
+
+            //Return Publication
+            return '<div class="publication bookPublication">' . $authors . ' (' . $year . '). ' . $article_title . $publication . $publisher . '</div>';
+
+        }
+
+    }
+
+    function create_peer_publication($pub){
+
+        if( $pub->custom != NULL ){
+
+            return $pub->custom;
+
+        }else{
+
+            $entity_filter = array('authors', 'article_title', 'title', 'pages');
+            foreach( $pub as $key => $val ){
+                if( in_array($key, $entity_filter) ){
+                    $val = trim($val);
+                    $val = htmlentities($val, ENT_COMPAT, 'UTF-8');
+                    $pub->$key = $val;
+                }
+            }unset($key, $val);
+
+            if( $pub->authors == NULL ){ $authors = ''; }
+            else{
+                $authors = '<span class="publication_author">'.$pub->authors.'</span>';
+            }
+
+            if( $pub->year == NULL ){ $year = ''; }
+            else{
+                $year = '<span class="publication_year">'.$pub->year.'</span>';
+            }
+
+            if( $pub->article_title == NULL ){ $article_title = ''; }
+            else{
+                $punctuation = ( has_punctuation($pub->article_title) ) ? ' ' : '. ';
+                $article_title = '<span class="publication_article_title">'. $pub->article_title .'</span>'.$punctuation;
+            }
+
+            $show_in_press = ($pub->year < (date('Y', @mktime())-1)) ? false : true;
+
+            if( $pub->title == NULL && $pub->volume == NULL && $pub->pages == NULL && $show_in_press === TRUE){
+
+                $pubtitle = 'Submitted for publication.';
+
+            }elseif( $pub->title != NULL && $pub->volume == NULL && $pub->pages == NULL ){
+
+                $in_press = ( $show_in_press === TRUE ) ? ', in press.' : '.';
+                $pubtitle = '<span class="publication_title"><em>'.$pub->title.'</em></span>'.$in_press;
+
+            }else{
+
+                $title = ($pub->title != NULL ) ? '<span class="publication_title"><em>'.$pub->title.'</em></span>' : '';
+                $volume = ($pub->volume != NULL ) ? ', <span class="publication_volume"><strong>'.$pub->volume.'</strong></span>' : '';
+                $pages = ($pub->pages != NULL ) ? ', <span class="publication_pages">'.$pub->pages.'</span>' : '';
+                $pubtitle = $title.$volume.$pages;
+                if( $pubtitle != NULL ){ $pubtitle .= '.'; }
+                unset($title, $volume, $pages);
+
+            }
+
+            return '<div class="publication peerPublication">' .$authors.' ('.$year.'). '.$article_title.' '.$pubtitle.'</div>';
+
+        }
+
+    }
+
+/* End of file functions.php */
