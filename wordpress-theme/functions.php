@@ -73,3 +73,12 @@
 					<p class="wp-caption-text">'.$caption.'</p>
 				</div>';
 	}
+
+
+//API Functions
+  
+    function get_api_data($uri){
+	    $url = 'http://'.$_SERVER['SERVER_NAME'].$uri;
+	    $raw_result = simple_curl($url);
+	    return json_decode($raw_result);
+    }
