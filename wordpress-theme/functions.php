@@ -188,3 +188,39 @@
         header('location:'.$redirect); exit();
     }
 
+
+//Private pages functions
+
+    function the_title_trim($title){
+        //Filter out the Private: title
+        $pattern[] = '/Private:/';
+        $replacement[] = '<span class="wp-title-private">Private:</span>'; // Enter some text to put in place of Private:
+        return preg_replace($pattern, $replacement, $title);
+    }
+    add_filter('the_title', 'the_title_trim');
+
+    function redirect_private_posts($posts, &$wp_query){
+        //Catch private pages and redirect
+        //Code modified from http://wordpress.stackexchange.com/a/11942
+
+        //Remove filter now, so that on subsequent post querying we don't get involved!
+        remove_filter('the_posts', 'redirect_private_posts', 5, 2);
+
+        if( ! ($wp_query->is_page && empty($posts)) ){
+            return $posts; // bail, not page with no results
+        }
+
+        if( ! empty($wp_query->query['page_id']) ){
+            $page = get_page($wp_query->query['page_id']);
+        }else{
+            $page = get_page_by_path($wp_query->query['pagename']);
+        }
+
+        if ( $page && $page->post_status == 'private' ) {
+            header('location:/help/private-pages/?from='.$_SERVER['REQUEST_URI']);
+            exit();
+        }
+
+    }
+    if( ! is_admin() ){ add_filter('the_posts', 'redirect_private_posts', 5, 2); }
+
