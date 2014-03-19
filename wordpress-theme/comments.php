@@ -9,7 +9,7 @@
  * located in the functions.php file
  *
  * @package WordPress
- * @subpackage CompNet
+ * @subpackage CELEST Responsive
  * @since 3.0.0
  */
 

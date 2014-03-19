@@ -3,7 +3,7 @@
  * The Sidebar containing the primary and secondary widget areas
  *
  * @package WordPress
- * @subpackage CELEST
+ * @subpackage CELEST Responsive
  * @since 3.0.0
  */
 
