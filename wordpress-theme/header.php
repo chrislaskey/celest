@@ -37,3 +37,55 @@
 </head>
 
 <body <?php body_class(' page-'.implode(' page-', $uri)); ?>>
+
+    <div id="top-sections-container">
+        <div id="top-sections">
+
+            <header>
+
+                <ul id="nav" class="container">
+                    <li><a class="home" href="#">Home</a></li>
+                    <li><a class="about-us" href="#">About Us</a></li>
+                    <li><a class="our-people" href="#">Our People</a></li>
+                    <li class="selected"><a class="our-work" href="#">Our work</a></li>
+                    <li><a class="outreach-and-impacts" href="#">Outreach &amp; Impacts</a></li>
+                    <li><a class="events-and-programs" href="#">Events &amp; Programs</a></li>
+                    <li><a class="news" href="#">News</a></li>
+                    <li><a class="contact"  href="#">Contact</a></li>
+                </ul>
+
+                <section id="nav-mobile" class="container">
+                    <form action="" method="post">  
+                        <select>
+                            <option value="">Navigation</option>
+                            <option value="">&nbsp;</option>
+                            <option value="/">Home</option>
+                            <option value="/about-us">About Us</option>
+                            <option value="/our-people">Our People</option>
+                            <option value="/our-work">Our Work</option>
+                            <option value="/outreach-and-impacts">Outreach &amp; Impacts</option>
+                            <option value="/events-and-programs">Events &amp; Programs</option>
+                            <option value="/news">News</option>
+                            <option value="/contact">Contact</option>
+                        </select>
+                    </form>
+                </section>
+
+            </header>
+
+            <section id="logo-section">
+                <div id="logo-content" class="container">
+                    <a id="logo" href="/">CELEST</a>
+                    <div id="logo-subheader">
+                        <span id="subheader-celest">Center of Excellence for Learning in Education, Science and Technology</span>
+                        <span id="subheader-nsf">A National Science Foundation Science of Learning Center</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="main" class="container clearfix">
+                <section id="sidebar" class="five columns alpha">
+                    <?php include(TEMPLATEPATH.'/sidebar.php'); ?>
+                </section>
+
+                <section id="content-container" class="eleven columns omega">
