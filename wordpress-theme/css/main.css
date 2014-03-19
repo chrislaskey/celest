@@ -133,7 +133,8 @@ div#top-sections-container {
             text-transform: uppercase;
         }
 
-            #nav li.selected a {
+            #nav li.current-menu-item a,
+            #nav li.current-menu-ancestor a {
                 color: #c6ddf1;
             }
 
@@ -242,7 +243,7 @@ section#sidebar h3 {
     }
 
 ul#sidenav  {
-    font: 16px/20px 'Avenir Medium', 'Avenir', 'Helvetica', sans-serif;
+    font: 16px/20px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
     list-style: none;
     margin: 0px 15px 60px 40px;
     padding: 0px;
@@ -253,13 +254,37 @@ ul#sidenav  {
     }
 
         ul#sidenav li a {
-            color: #556882;
+            color: #384960;
             display: block;
             padding: 10px 0px 10px 0px;
         }
 
-            ul#sidenav li.select a {
-                color: #2e3a4a;
+            ul#sidenav li.current-menu-item > a,
+            ul#sidenav li.current-menu-ancestor > a {
+                color: #3983b2;
+            }
+
+        ul#sidenav ul {
+            display: none;
+            list-style: none;
+            margin: 0px;
+            padding: 0px 0px 10px 15px;
+        }
+
+            ul#sidenav li.current-menu-item ul,
+            ul#sidenav li.current-menu-ancestor > ul {
+                display: block;
+            }
+
+            ul#sidenav ul li {
+                font-size: 14px;
+                line-height: 16px;
+                border-bottom: none;
+            }
+
+            ul#sidenav ul li.current-menu-item > a,
+            ul#sidenav ul li.current-menu-ancestor > a {
+                color: #3983b2;
             }
 
 
