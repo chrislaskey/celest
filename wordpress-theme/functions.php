@@ -166,3 +166,25 @@
     }
 
 
+//Functions for interacting with CI Access library
+
+    function user_verify($verb, $type, $arguments){
+        if( ! class_exists('Services_JSON') ){
+            include($_SERVER['DOCUMENT_ROOT'] . '/site-wordpress/wp-includes/class-json.php');
+        }
+        $json = new Services_JSON;
+
+        $uri = array();
+        $uri[] = $verb;
+        $uri[] = $type;
+        $uri[] = $arguments;
+        $result = simple_curl('http://'.$_SERVER['SERVER_NAME'].'/login/verify/'.implode('/', $uri), TRUE);
+        return $json->decode($result) === TRUE;
+    }
+
+    function user_require($verb, $type, $arguments, $redirect = ''){
+        if( user_verify($verb, $type, $arguments) ){ return TRUE; }
+        $redirect = ($redirect != '' ) ? $redirect : '/login/restricted'.$_SERVER['REQUEST_URI'];
+        header('location:'.$redirect); exit();
+    }
+
