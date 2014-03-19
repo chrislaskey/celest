@@ -329,6 +329,17 @@ section#content img {
     max-width: 100%;
 }
 
+section#content blockquote {
+    border-left: 5px solid #e3eaef;
+    margin: 2em 0px;
+    padding: 0em 30px;
+}
+
+    section#content blockquote p:last-child,
+    section#content blockquote ul:last-child {
+        margin-bottom: 0px;
+    }
+
 /* News Footer
 ============================================================================ */
 
