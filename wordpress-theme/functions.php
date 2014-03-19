@@ -456,3 +456,136 @@
     }
 
 
+//Presentation display functions
+
+    function create_conference_presentation($pres){
+
+        if( $pres->custom != NULL ){
+
+            return $pres->custom;
+
+        }else{
+
+            $entity_filter = array('authors', 'title', 'event', 'location', 'date');
+            foreach( $pres as $key => $val ){
+                if( in_array($key, $entity_filter) ){
+                    $val = trim($val);
+                    $val = htmlentities($val, ENT_COMPAT, 'UTF-8');
+                    $pres->$key = $val;
+                }
+            }unset($key, $val);
+
+            if( $pres->authors != NULL ){
+                $authors = ($pres->authors != NULL) ? '<span class="presentation_author">'.$pres->authors.'</span>'  : '';
+                $year = ($pres->year != NULL ) ?  ' (<span class="presentation_year">'. $pres->year .'</span>). ' : '';
+            }else{
+                $authors = '';
+                $year = '';
+            }
+
+            if( $pres->title == NULL ){ $title = ''; }
+            else{
+                $punctuation = ( has_punctuation($pres->title) ) ? '' : '.';
+                $title = '<span class="presentation_title">'. $pres->title .'</span>'.$punctuation;
+            }
+
+            if( $pres->event_prefix == NULL ){ $event_prefix = ' '; }
+            else{
+                $event_prefix = ' <span class="presentation_event_prefix">'. $pres->event_prefix .'</span> ';
+            }
+
+            if( $pres->event == NULL ){ $event = ''; }
+            else{
+                $punctuation = ($pres->location != NULL || $pres->date != NULL) ? ', ' : '';
+                if( $pres->event_type == 'italic' ){
+                    $event = '<span class="presentation_event presentation_type_'.$pres->event_type.'"><em>'. $pres->event .'</em></span>'.$punctuation;
+                }elseif( $pres->event_type == 'bold' ){
+                    $event = '<span class="presentation_event presentation_type_'.$pres->event_type.'"><strong>'. $pres->event .'</strong></span>'.$punctuation;
+                }else{
+                    $event = '<span class="presentation_event presentation_type_normal">'. $pres->event .'</span>'.$punctuation;
+                }
+            }
+
+            if( $pres->location == NULL ){ $location = ''; }
+            else{
+                $punctuation = ($pres->date != NULL) ? ', ' : '';
+                $location = ' <span class="presentation_location">'. $pres->location .'</span>'.$punctuation;
+            }
+
+            if( $pres->date == NULL ){ $date = ''; }
+            else{
+                $date = ' <span class="presentation_date">'. $pres->date .'</span>';
+            }
+
+            return '<div class="presentation conferencePresentation">'.$authors.$year.$title.$event_prefix.$event.$location.$date.'.</div>';
+
+        }
+
+    }
+
+    function create_nonconference_presentation($pres){
+
+        if( $pres->custom != NULL ){
+
+            return $pres->custom;
+
+        }else{
+
+            $entity_filter = array('authors', 'title', 'event', 'location', 'date');
+            foreach( $pres as $key => $val ){
+                if( in_array($key, $entity_filter) ){
+                    $val = trim($val);
+                    $val = htmlentities($val, ENT_COMPAT, 'UTF-8');
+                    $pres->$key = $val;
+                }
+            }unset($key, $val);
+
+            //Determine Author and Year
+            if( $pres->authors != NULL ){
+                $authors = ($pres->authors != NULL) ? '<span class="presentation_author">'.$pres->authors.'</span>'  : '';
+                $year = ($pres->year != NULL ) ?  ' (<span class="presentation_year">'. $pres->year .'</span>). ' : '';
+            }else{
+                $authors = '';
+                $year = '';
+            }
+
+            if( $pres->title == NULL ){ $title = ''; }
+            else{
+                $punctuation = ( has_punctuation($pres->title) ) ? '' : '.';
+                $title = '<span class="presentation_title">'. $pres->title .'</span>'.$punctuation;
+            }
+
+            if( $pres->event_prefix == NULL ){ $event_prefix = ' '; }
+            else{
+                $event_prefix = ' <span class="presentation_event_prefix">'. $pres->event_prefix .'</span> ';
+            }
+
+            if( $pres->event == NULL ){ $event = ''; }
+            else{
+                $punctuation = ($pres->location != NULL || $pres->date != NULL) ? ', ' : '';
+                if( $pres->event_type == 'italic' ){
+                    $event = '<span class="presentation_event presentation_type_'.$pres->event_type.'"><em>'. $pres->event .'</em></span>'.$punctuation;
+                }elseif( $pres->event_type == 'bold' ){
+                    $event = '<span class="presentation_event presentation_type_'.$pres->event_type.'"><strong>'. $pres->event .'</strong></span>'.$punctuation;
+                }else{
+                    $event = '<span class="presentation_event presentation_type_normal">'. $pres->event .'</span>'.$punctuation;
+                }
+            }
+
+            if( $pres->location == NULL ){ $location = ''; }
+            else{
+                $punctuation = ($pres->date != NULL) ? ', ' : '';
+                $location = ' <span class="presentation_location">'. $pres->location .'</span>'.$punctuation;
+            }
+
+            if( $pres->date == NULL ){ $date = ''; }
+            else{
+                $date = ' <span class="presentation_date">'. $pres->date .'</span>';
+            }
+
+            return '<div class="presentation nonconferencePresentation">'.$authors.$year.$title.$event_prefix.$event.$location.$date.'.</div>';
+
+        }
+
+    }
+
