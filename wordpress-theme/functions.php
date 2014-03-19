@@ -7,7 +7,7 @@
 
 
 //Definitions
-    if( ! defined('CL_TEMPLATEPATH') ){ define('CL_TEMPLATEPATH', '/wp-content/themes/celest-responsive'); }
+    if( ! defined('CL_TEMPLATEPATH') ){ define('CL_TEMPLATEPATH', '/site-wordpress/wp-content/themes/celest-responsive'); }
 
 
 //Wordpress Overrides and Content Registrations
