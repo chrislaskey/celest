@@ -52,7 +52,7 @@
                     <li><a class="outreach-and-impacts" href="/outreach-and-impacts">Outreach &amp; Impacts</a></li>
                     <li><a class="events-and-programs" href="/events-and-programs">Events &amp; Programs</a></li>
                     <li><a class="news" href="/news">News</a></li>
-                    <li><a class="contact"  href="/contact">Contact</a></li>
+                    <li><a class="contact" href="/contact-us">Contact</a></li>
                 </ul>
 
                 <section id="nav-mobile" class="container">
@@ -67,7 +67,7 @@
                             <option value="/outreach-and-impacts">Outreach &amp; Impacts</option>
                             <option value="/events-and-programs">Events &amp; Programs</option>
                             <option value="/news">News</option>
-                            <option value="/contact">Contact</option>
+                            <option value="/contact-us">Contact Us</option>
                         </select>
                     </form>
                 </section>
