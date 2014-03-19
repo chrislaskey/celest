@@ -169,28 +169,18 @@
 //WordPress functions from default theme
 
     if( !function_exists('cat_list') ){
-
         function cat_list() {
             return term_list('category', ', ', 'Categories: %s', 'Also posted in %s');
         }
-
     }
 
     if( !function_exists('tag_list') ){
-
         function tag_list() {
             return term_list( 'post_tag', ', ', 'Tags: %s', 'Also tagged %s');
         }
-
     }
 
     if( !function_exists('term_list') ){
-
-        /**
-         * Updated v.1.0.1
-         * CL
-         */
-
         function term_list($taxonomy, $glue = ', ', $text = '', $also_text = '') {
 
             global $post, $wp_query;
@@ -223,7 +213,6 @@
                 return sprintf( $text, join( $glue, $tlist ) );
             return '';
         }
-
     }
 
 
@@ -284,4 +273,186 @@
 
     }
     if( ! is_admin() ){ add_filter('the_posts', 'redirect_private_posts', 5, 2); }
+
+
+//FileTree class
+
+    class Filetree {
+
+        /**
+        * Filetree class creates a list downloadable files in a given directory
+        *
+        * Supports regex and direct-match string rules for file ommittance (blacklist)
+        * There is currently no whitelist support, as things quickly get messy mixing blacklisting
+        * and whitelisting.
+        */
+
+        private $dir;
+        private $rules;
+        private $settings;
+        private $options;
+
+        public function __construct( $options = array() ){
+            $this->parse_options($options);
+            $this->initialize_class_variables();
+        }
+
+        private function parse_options($options){
+            $options['base_directory'] = ( isset($options['base_directory']) ) ? rtrim($options['base_directory'], '/') : '';
+            $options['document_root'] = ( isset($options['document_root']) ) ? rtrim($options['document_root'], '/').'/' : rtrim($_SERVER['DOCUMENT_ROOT'], '/').'/';
+            $options['download_path'] = ( isset($options['download_path']) ) ? rtrim($options['download_path'], '/').'/' : '';
+            $options['debug'] = ( isset($options['debug']) ) ? $options['debug'] : FALSE;
+            $options['open_directories'] = ( isset($options['open_directories']) && is_bool($options['open_directories']) ) ? $options['open_directories'] : FALSE;
+            $options['show_base_directory'] = ( isset($options['show_base_directory']) && is_bool($options['show_base_directory']) ) ? $options['show_base_directory'] : FALSE;
+            $this->options = $options;
+        }
+
+        private function initialize_class_variables(){
+            $options = $this->options;
+            $this->dir = new stdclass();
+            $this->dir->base = $this->options['base_directory'];
+            $this->dir->root = $this->options['document_root'];
+            $this->rules = new stdclass();
+            $this->rules->regex = array();
+            $this->rules->string = array();
+            $this->settings = new stdclass();
+            $this->settings->download_path = $this->options['download_path'];
+            $this->settings->debug = $this->options['debug'];
+            $this->settings->open_directories = $this->options['open_directories'];
+            $this->settings->recursion_count = 0;
+            $this->settings->recursion_limit = 0; //Turned off. Positive value turns limit on.
+            $this->settings->show_base_directory = $this->options['show_base_directory'];
+            //* Unimplemented: $last_modified = @filemtime($path);
+        }
+
+        public function add_rule($rule, $type = 'string'){
+            if( $type == 'string' ){
+                $this->rules->string[] = $rule;
+                $this->debug('success', 'Added rule: '.$rule.' ('.$type.')');
+                return TRUE;
+            }elseif( $type == 'regex' ){
+                $this->rules->regex[] = $rule;
+                $this->debug('success', 'Added rule: '.$rule.' ('.$type.')');
+                return TRUE;
+            }else{
+                $this->debug('error', 'Error adding rule: '.$rule.' ('.$type.')');
+                return FALSE;
+            }
+        }
+
+        public function create_tree(){
+            $data = $this->recurse($this->dir->base);
+            return '<ul class="filetree">'.$data.'</ul>';
+        }
+
+        public function verify($file){
+            return $this->pass($file);
+        }
+
+        private function recurse($path){
+            if( ! $this->pass($path) ){ return FALSE; }
+
+            //Expand Directories
+            if( is_dir($this->dir->root.$path) ){
+
+                //Return Files
+                $listing = scandir($this->dir->root.$path);
+
+                //Recursion in PHP requires a return statement,
+                //but a return statement also terminates the loop.
+                //So we have to loop, store the results, then return outside the loop.
+                $li = array();
+
+                //Recurse for each item (file or directory)
+                foreach($listing as $item){
+
+                    //Remove items starting with .
+                    if( substr($item, 0, 1) !== '.' ){
+
+                        //Increase recursion count and check against recursion limit
+                        $this->settings->recursion_count++;
+                        if( $this->settings->recursion_limit == 0 || $this->settings->recursion_count < $this->settings->recursion_limit ){
+                            $li[] = $this->recurse($path.'/'.$item);
+                        }else{ $this->debug('error', 'Recursion limit reached: '.$this->settings->recursion_limit); }
+
+                    }
+
+                }unset($listing, $item);
+                return $this->create_directory($path, $li);
+            }
+
+            if( is_file($this->dir->root.$path) ){
+                if( is_readable($this->dir->root.$path) ){
+                    return $this->create_file($path);
+                }else{
+                    $this->debug('error', 'File not readable: '.$this->dir->root.$path);
+                }
+            }
+        }
+
+        private function pass($test){
+            $return = TRUE;
+
+            if( count($this->rules->string) > 0 ){
+                foreach( $this->rules->string as $rule ){
+                    if( stripos($test, $rule) !== FALSE ){
+                        $return = FALSE;
+                        $this->debug('notice', 'Path does not pass rule test. Path: '.$test.' Rule: '.$rule);
+                        break;
+                    }
+                }unset($rule);
+            }
+
+            if( count($this->rules->regex) > 0 ){
+                foreach( $this->rules->regex as $rule ){
+                    if( preg_match($rule, $test) != NULL ){ //Returns 0 on no match, FALSE on error. Weak typing to the rescue.
+                        $return = FALSE;
+                        $this->debug('notice', 'Path does not pass rule test. Path: '.$test.' Rule: '.$rule.' Regex Error: '.preg_last_error());
+                        break;
+                    }
+                }unset($rule);
+            }
+            return $return;
+        }
+
+        private function create_file($path){
+            $info = pathinfo($path);
+            if( ! isset($info['filename']) ){ //Pathinfo doesn't include 'filename' key until php 5.2.0
+                $dir_end = ( strrpos($path,'/') !== FALSE ) ? strrpos($path,'/')+1 : 0;
+                $info['filename'] = substr($path, $dir_end, strrpos(substr($path, $dir_end),'.'));
+            }
+            if( ! isset($info['extension']) ){
+                $info['extension'] = '';
+            }
+
+            return '<li class="ft-file ext-'.$info['extension'].'">
+                        <a class="file" href="'.$this->settings->download_path.ltrim($path, '/').'" target="blank">'.$info['basename'].'</a>
+                    </li>'."\n";
+        }
+
+        private function create_directory($path, $li){
+            if( $path == NULL ){
+                return implode("\n", $li);
+            }
+
+            $info = pathinfo($path);
+            if( ! isset($info['filename']) ){ //Pathinfo doesn't include 'filename' key until php 5.2.0
+                $dir_end = ( strrpos($path,'/') !== FALSE ) ? strrpos($path,'/')+1 : 0;
+                $info['filename'] = substr($path, $dir_end, strrpos(substr($path, $dir_end),'.'));
+            }
+
+            $class = ($this->settings->open_directories === TRUE) ? 'open' : 'closed';
+            return '<li class="ft-directory">
+                        <a href="#">'.$info['basename'].'</a>
+                        <ul class="filetree '.$class.'">'.implode("\n", $li).'</ul>
+                    </li>'."\n";
+        }
+
+        private function debug($type, $message){
+            if( $this->settings->debug == 'echo' ){
+                echo $type, $message, '<br/>';
+            }
+        }
+    }
+
 
