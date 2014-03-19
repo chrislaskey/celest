@@ -15,6 +15,27 @@
 	add_shortcode('wp_caption', 'cl_img_caption_shortcode');
 	add_shortcode('caption', 'cl_img_caption_shortcode');
 
+	register_nav_menus(array(
+		'main' => 'Main Menu',
+		'sidenav_about_us' => 'Sidenav About Us Menu',
+		'sidenav_our_people' => 'Sidenav Our People Menu',
+		'sidenav_our_work' => 'Sidenav Our Work Menu',
+		'sidenav_outreach_and_impacts' => 'Sidenav Outreach and Impacts Menu',
+		'sidenav_events_and_programs' => 'Sidenav Events and Programs Menu',
+		'sidenav_news' => 'Sidenav News Menu',
+		'sidenav_contact_us' => 'Sidenav Contact Us Menu',
+	));
+
+	register_sidebar(array(
+		'name' => 'Sidebar Widget Area',
+		'id' => 'sidebar-widget-area',
+		'description' => 'The primary sidebar widget area',
+		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+		'after_widget' => "</li>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	));
+
 
 //Core function overrides via Hooks
 	function cl_img_caption_shortcode($attr, $content = null) {
