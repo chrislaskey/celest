@@ -166,6 +166,23 @@
     }
 
 
+//Loop functions
+
+    function loop_page_title(){
+        $uri = create_uri_array($_SERVER['REQUEST_URI']);
+        if( ! isset($uri[0]) || empty($uri[0]) ) {
+            $page_title = 'News';
+        } elseif( ! isset($uri[1]) && !empty($uri[0]) ){
+            $page_title = clean_slug($uri[0]);
+        } elseif( isset($uri[2]) && $uri[1] == 'category' ){ 
+            $page_title = clean_slug($uri[2]);
+        } elseif( isset($uri[1]) ){ 
+            $page_title = clean_slug($uri[1]);
+        }
+        return $page_title;
+    }
+
+
 //WordPress functions from default theme
 
     if( !function_exists('cat_list') ){

@@ -24,6 +24,8 @@
         </div>
         
     <?php else: ?>
+
+        <h1><?php echo ($page_title = loop_page_title()) ? $page_title : 'News'; ?></h1>
         
         <ul class="posts">
             
