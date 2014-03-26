@@ -325,6 +325,12 @@ section#content a {
         text-decoration: underline;
     }
 
+        section#content h1 a:hover,
+        section#content h2 a:hover,
+        section#content h3 a:hover {
+            text-decoration: none;
+        }
+
 section#content img {
     max-width: 100%;
 }
@@ -370,6 +376,25 @@ section#content blockquote {
 
     /* News Section
     ------------------------------------------------------------------------ */
+    ul.posts {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+    }
+
+        ul.posts li {
+            margin: 0px 0px 1em 0px;
+        }
+
+    .post-date {
+        color: #2e3a4a;
+        display: block;
+        letter-spacing: 1px;
+        margin: 24px 0px 24px 0px;
+        font: 14px/14px 'Avenir Medium', 'Avenir', 'Helvetica', sans-serif;
+        text-transform: uppercase;
+    }
+    
     .nav-below {
         margin: 1em 0px 0.5em 0px;
     }
