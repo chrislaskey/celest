@@ -340,27 +340,31 @@ section#content blockquote {
         margin-bottom: 0px;
     }
 
-    /* Our Work - Highlights Content Section
+    /* Our Work Section
     ------------------------------------------------------------------------ */
-    .file_icon{
-        display:inline-block;
-        height:24px;
-        margin:0px 0px 0px 6px;
-        padding:0px 0px 0px 20px;
+    ol.our-work-list li {
+        margin: 0px 0px 1em 0px;
+    }
+
+    .file-icon {
+        display: block;
+        height: 24px;
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 20px;
     }
         
-        .file_type_doc,
-        .file_type_docx{
-            background:url('../images/icon-doc.png') top left no-repeat;
+        .file-type-doc,
+        .file-type-docx {
+            background: url('../images/icon-doc.png') top left no-repeat;
         }
         
-        .file_type_jpg,
-        .file_type_jpeg{
-            background:url('../images/icon-jpg.png') top left no-repeat;
+        .file-type-jpg,
+        .file-type-jpeg {
+            background: url('../images/icon-jpg.png') top left no-repeat;
         }
         
-        .file_type_pdf{
-            background:url('../images/icon-pdf.png') top left no-repeat;
+        .file-type-pdf {
+            background: url('../images/icon-pdf.png') top left no-repeat;
         }
 
 
