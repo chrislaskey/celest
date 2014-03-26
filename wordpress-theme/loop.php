@@ -35,21 +35,12 @@
             
             <li <?php post_class( ($first === TRUE) ? 'first' : '' ); ?>>
                 
-                <h2 class="title post_title"><a href="<?php the_permalink(); ?>" title="Permalink to <?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+                <h2 class="title post-title"><a href="<?php the_permalink(); ?>" title="Permalink to <?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
                 
-                <div class="post_header">
-                    
-                    <?php if( !is_author() ): ?>
-                        
-                        <!-- <span class="author">By <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>"><?php the_author(); ?></a></span>&nbsp;|&nbsp;<span class="date"><?php echo get_the_date(); ?></span> -->
-                        <span class="date"><?php echo get_the_date(); ?></span><!--&nbsp;|&nbsp;<span class="author">By <?php the_author(); ?></span>-->
-                        
-                    <?php else : ?>
-                        
-                        <span class="date"><?php echo get_the_date(); ?></span>
-                    
-                    <?php endif; ?>
-                    
+                <div class="post-header">
+
+                    <span class="post-date"><?php echo get_the_date(); ?></span>
+
                 </div>
                 
                 <?php if ( is_author() || is_search() ) : //Only display Excerpts for archives & search ?>
@@ -81,7 +72,7 @@
                         }
                         
                         if( $categories = cat_list() ){
-                            // $information['categories'] = '<div class="categories_list">'.$categories.'</div>';
+                            $information['categories'] = '<div class="categories_list">'.$categories.'</div>';
                         }
                         
                         if( $tags = tag_list() ){
@@ -89,7 +80,8 @@
                         }
                         
                         if( $information != NULL ){
-                            echo '<div class="post_information">'.implode("<br/>\n\n", $information).'<div class="clear"></div></div>';
+                            // Disable footer information, uncomment to display it
+                            // echo '<div class="post_information">'.implode("<br/>\n\n", $information).'<div class="clear"></div></div>';
                         }
                         
                     ?>
