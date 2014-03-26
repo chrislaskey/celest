@@ -106,9 +106,9 @@
     
     <?php if($wp_query->max_num_pages > 1): //Display navigation to next/previous pages when applicable ?>
         
-        <div class="nav_below">
-            <div class="nav_previous"><?php next_posts_link('&laquo; Older posts'); ?></div>
-            <div class="nav_next"><?php previous_posts_link('Newer posts &raquo;'); ?></div>
+        <div class="nav-below clearfix">
+            <div class="nav-previous"><?php next_posts_link('&laquo; Older posts'); ?></div>
+            <div class="nav-next"><?php previous_posts_link('Newer posts &raquo;'); ?></div>
         </div>
         
     <?php endif; ?>

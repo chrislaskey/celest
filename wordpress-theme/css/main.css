@@ -368,6 +368,24 @@ section#content blockquote {
         }
 
 
+    /* News Section
+    ------------------------------------------------------------------------ */
+    .nav-below {
+        margin: 1em 0px 0.5em 0px;
+    }
+
+        .nav-below .nav-previous {
+            float: left;
+            width: 50%;
+        }
+
+        .nav-below .nav-next {
+            float: left;
+            text-align: right;
+            width: 50%;
+        }
+
+
 /* News Footer
 ============================================================================ */
 
