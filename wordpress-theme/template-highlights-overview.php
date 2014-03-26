@@ -15,7 +15,9 @@
             <h1 class="title page_title"><?php the_title(); ?></h1>
 
             <div class="post_content">
+
                 <?php the_content(); ?>
+
                 <?php
 
                     $data = get_api_data('/api/our-work/research-and-outreach-highlights');
@@ -39,7 +41,9 @@
                         echo '<p>There are no highlights to display for the given year.</p>';
 
                     }
+
                 ?>
+
             </div>
 
         </section>

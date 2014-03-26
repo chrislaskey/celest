@@ -15,7 +15,9 @@
             <h1 class="title page_title"><?php the_title(); ?></h1>
 
             <div class="post_content">
+
                 <?php the_content(); ?>
+
                 <?php
 
                     $year = get_post_meta($post->ID, 'year', TRUE); 
@@ -50,6 +52,7 @@
 
                     }
                 ?>
+
             </div>
 
         </section>
