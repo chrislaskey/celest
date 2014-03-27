@@ -16,116 +16,93 @@
         <section class="container">
             <section id="news-footer-articles">
 
-                <article class="news-item one-third column alpha">
-                    <span class="news-section">Media Publicity</span>
-                    <a href="#" class="news-title">NASA Center Innovation Fund features CELEST Research</a>
-                    <span class="news-description">The CELEST funded Neuromorphics Lab (CompNet) has been "working with NASA Langley on a Center Innovation Fund (CIF) with ...</span>
-                </article>
-
-                <article class="news-item one-third column">
-                    <span class="news-section">Media Publicity</span>
-                    <a href="#" class="news-title">NASA Center Innovation Fund features CELEST Research</a>
-                    <span class="news-description">The CELEST funded Neuromorphics Lab (CompNet) has been "working with NASA Langley on a Center Innovation Fund (CIF) with ...</span>
-                </article>
-
-                <article class="news-item one-third column omega">
-                    <span class="news-section">Media Publicity</span>
-                    <a href="#" class="news-title">NASA Center Innovation Fund features CELEST Research</a>
-                    <span class="news-description">The CELEST funded Neuromorphics Lab (CompNet) has been "working with NASA Langley on a Center Innovation Fund (CIF) with ...</span>
-                </article>
-
-                <?php //display_news_articles(3); ?>
+                <?php display_news_articles(3); ?>
 
                 <?php
 
                     function display_news_articles($total = 3){
-                        // Display n number of buckets.
-                        // For a given bucket:
-                        //  - Check if a valid user defined article box exists in position n
-                        //  - If not, display a news item.
+                        $i = 0;
                         $per_row = 3;
-                        for($i = 1; $i <= $total; $i++){
-                            if( return_user_defined_article($i) ){
-                                $bucket_content = return_user_defined_article($i);
-                            }else{
-                                $bucket_content = return_news_article();
-                            }
+                        $posts = return_news_posts();
+                        if( empty($posts) ){ return; }
 
-                            $class = 'bucket-'.$i;
-                            if( $i % $per_row  === 0 ){ $class .= ' last_in_row'; }
-                            print_bucket($bucket_content, $class);
+                        foreach( $posts as $post ){
+                            $i++;
+                            $content = process_news_article($post);
+                            $class = return_news_articles_class($i, $per_row);
+                            print_bucket($content, $class);
                         }
                     }
 
-                    function return_user_defined_article($index){
-                        $custom_fields = get_post_custom();
-                        $article_position = 'article_position_' . $index;
-
-                        if( ! isset($custom_fields[$article_position]) ){
-                            return NULL;    
-                        }
-
-                        $user_article = $custom_fields[$article_position][0];
-                        if( ! verify_user_defined_article($user_article) ){
-                            return NULL;
-                        }
-
-                        return $user_article;
-                    }
-
-                        function verify_user_defined_article($article_to_test){
-                            // Verify a article box contains all required elements using a simple
-                            // strpos check. Returns boolean.
-                            $required_elements = array(
-                                '<h5', '</h5>',
-                                '<h3', '</h3>',
-                                '<p', '</p>'
-                            );
-                            foreach( $required_elements as $element ){
-                                if( strpos($article_to_test, $element) === FALSE ){ return FALSE; }
-                            }
-                            return TRUE;
-                        }
-
-                    function return_news_article(){
-                        static $call_count;
-                        if( ! $call_count ){ $call_count = 0; }
-
+                    function return_news_posts(){
                         $args = array(
-                            'numberposts' => 1,
-                            'offset' => $call_count
+                            'numberposts' => 3,
+                            'post_status' => 'publish'
                         );
                         $posts = wp_get_recent_posts($args);
                         // wp_get_recent_posts is supposed to return an array
                         // of objects. But sometimes it returns an array of
                         // arrays. We don't need an object and it's easier to
                         // cast down to an array in PHP.
-                        $post = (array) $posts[0];
-                        $call_count++;
-
-                        return format_news_article($post);
+                        return (array) $posts;
                     }
 
-                        function format_news_article($post){
-                            $href = '/news/'.$post['ID'];
-                            $title = esc_attr($post['post_title']);
-                            $title = '<a href="'.$href.'">'.$title.'</a>';
-                            $link = '... <a href="'.$href.'">Learn More</a>';
-                            $char_limit = 215 - strlen($title);
-                            //Remove wordpress pseudo-tags like [caption id=...]
-                            $content = preg_replace('/\[.*\]/', '', $post['post_content']);
-                            $content = strip_tags($content);
-                            $content = break_at_next_word($char_limit, $content, $link);
+                    function process_news_article($post){
+                        $char_limit = 194;
 
-                            $article = '<h5>Recent News</h5>';
-                            $article .= '<h3>'.$title.'</h3>';
-                            $article .= '<p>'.$content.'</p>';
+                        $category = return_news_article_category($post['ID']);
 
-                            return $article;
+                        $link = '/news/'.$category['slug'].'/'.$post['post_name'];
+
+                        $title = esc_attr($post['post_title']);
+                        $chars_remaining = $char_limit - strlen($title);
+
+                        //Remove wordpress pseudo-tags like [caption id=...]
+                        $content = preg_replace('/\[.*\]/', '', $post['post_content']);
+                        $content = strip_tags($content);
+                        $content = break_at_next_word($chars_remaining, $content, $link);
+
+                        return array(
+                            'category' => $category['name'],
+                            'link'     => $link,
+                            'title'    => $title,
+                            'content'  => $content
+                        );
+                    }
+
+                    function return_news_article_category($id){
+                        $categories = get_the_category($id);
+                        $default = array(
+                            'name' => 'Recent News',
+                            'slug' => 'recent-news'
+                        );
+
+                        if( ! isset($categories[0]) ){ return $default; }
+                        if( ! isset($categories[0]->name) ){ return $default; }
+
+                        return array(
+                            'name' => $categories[0]->name,
+                            'slug' => $categories[0]->slug
+                        );
+                    }
+
+                    function return_news_articles_class($i, $per_row){
+                        if( ($i - 1) % $per_row == 0 ){
+                            $class = 'alpha';
+                        }elseif( $i % $per_row  === 0 ){
+                            $class = 'omega';
+                        }else{
+                            $class = '';
                         }
+                        return $class;
+                    }
 
-                    function print_bucket($bucket_content, $class = ''){
-                        echo '<li class="'.$class.'">'.$bucket_content.'</li>'."\n";
+                    function print_bucket($content, $class = ''){
+                        echo '<article class="news-item one-third column '.$class.'">
+                                <span class="news-section">'.$content['category'].'</span>
+                                <a href="'.$content['link'].'" class="news-title">'.$content['title'].'</a>
+                                <span class="news-description">'.$content['content'].'</span>
+                             </article>';
                     }
 
                 ?>
