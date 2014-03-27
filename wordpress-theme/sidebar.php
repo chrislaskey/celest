@@ -13,7 +13,7 @@
 
 <div class="navigation">
 
-    <h3 class="section"><?php echo ucwords(strtr($uri[0], '-', ' ')); ?></h3>
+    <h3 class="section"><?php echo get_sidebar_header(); ?></h3>
 
     <?php
 

@@ -254,6 +254,22 @@
     }
 
 
+//Sidebar functions
+
+    function get_sidebar_header(){
+	    $uri = create_uri_array($_SERVER['REQUEST_URI']);
+        if( $uri[0] == 'outreach-and-impacts' ){
+            return 'Outreach & Impacts';
+        }
+        if( $uri[0] == 'events-and-programs' ){
+            return 'Events & Programs';
+        }
+        $marks_removed = strtr( strtr($uri[0], '-', ' '), '_', ' ');
+        $uppercased = ucwords($marks_removed);
+        return $uppercased;
+    }
+
+
 //Loop functions
 
     function loop_page_title(){
