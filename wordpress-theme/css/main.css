@@ -335,6 +335,24 @@ section#content img {
     max-width: 100%;
 }
 
+section#content table {
+    margin: 1em 0px;
+}
+
+    section#content table tr.even{
+        background: #f4fbff;
+    }
+
+        section#content table tr.odd td:first-child,
+        section#content table tr.even td:first-child {
+            border-left: 2px solid #f0f7fc;
+        }
+
+            section#content table td{
+                padding: 10px;
+                vertical-align: top;
+            }
+
 section#content blockquote {
     border-left: 5px solid #e3eaef;
     margin: 2em 0px;
