@@ -231,7 +231,7 @@ div#logo-subheader {
 section#sidebar h3 {
     color: #2e3a4a;
     letter-spacing: 2px;
-    margin: 0px 40px 60px 40px;
+    margin: 0px 40px 44px 40px;
     font: 16px/16px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
     text-transform: uppercase;
 }
@@ -293,8 +293,8 @@ ul#sidenav  {
 
 section#content h1 {
     color: #4a9ed3;
-    font: 40px/40px 'Avenir Light', 'Avenir', 'Helvetica', sans-serif;
-    margin: -2px 0px 46px 0px;
+    font: 34px/34px 'Avenir Light', 'Avenir', 'Helvetica', sans-serif;
+    margin: -2px 0px 36px 0px;
 }
 
     @media only screen and (max-width: 768px)  {
@@ -308,7 +308,7 @@ section#content h1 {
 section#content h2 {
     color: #0b79be;
     font: 24px/24px 'Avenir Book', 'Avenir', 'Helvetica', sans-serif;
-    margin: 46px 0px 1em 0px;
+    margin: 40px 0px 1em 0px;
 }
 
 section#content p {
