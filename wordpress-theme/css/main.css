@@ -392,6 +392,36 @@ section#content blockquote {
         }
 
 
+    /* Events and Programs Section
+    ------------------------------------------------------------------------ */
+    ul.seminar-series {
+        list-style: none;
+        margin: 1em 0px;
+        padding: 0px;
+    }
+
+        ul.seminar-series li {
+            padding: 0px 0px 1.5em 0px;
+        }
+
+            ul.seminar-series li:after {
+                clear: both;
+                content: "\0020";
+                display: block;
+                height: 0;
+                visibility: hidden;
+            }
+
+            ul.seminar-series li:last-child {
+                padding-bottom: 0px;
+            }
+
+            ul.seminar-series .image {
+                float: left;
+                width: 110px;
+            }
+
+
     /* News Section
     ------------------------------------------------------------------------ */
     ul.posts {
