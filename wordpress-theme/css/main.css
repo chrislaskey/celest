@@ -369,6 +369,61 @@ section#content blockquote {
         margin-bottom: 0px;
     }
 
+
+    /* Our People Section
+    ------------------------------------------------------------------------ */
+    ul.user-group {
+        list-style: none;
+        margin: 1em 0px;
+        padding: 0px;
+    }
+
+        ul.user-group li {
+            padding: 1.5em 0px 1.5em 0px;
+            border-bottom: 1px solid #e3eaef;
+        }
+
+            ul.user-group li:after {
+                clear: both;
+                content: "\0020";
+                display: block;
+                height: 0;
+                visibility: hidden;
+            }
+
+            ul.user-group li:first-child {
+                padding-top: 0px;
+            }
+
+            ul.user-group li:last-child {
+                border-bottom: none;
+                padding-bottom: 0px;
+            }
+
+            ul.user-group .image {
+                float: left;
+                width: 110px;
+            }
+
+            ul.user-group .text {
+                float: left;
+                width: 555px;
+                max-width: 100%;
+            }
+
+                ul.user-group .text span {
+                    display: block;
+                }
+
+                    ul.user-group .text span.organization {
+                        margin-bottom: 1em;
+                    }
+
+                    ul.user-group .text span.title {
+                        font: 14px/20px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
+                    }
+
+
     /* Our Work Section
     ------------------------------------------------------------------------ */
     ol.our-work-list li {
