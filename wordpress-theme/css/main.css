@@ -337,6 +337,7 @@ section#content img {
 
 section#content table {
     margin: 1em 0px;
+    width: 100%;
 }
 
     section#content table tr.even{
@@ -348,8 +349,12 @@ section#content table {
             border-left: 2px solid #f0f7fc;
         }
 
-            section#content table td{
+            section#content table tr.odd td,
+            section#content table tr.even td {
                 padding: 10px;
+            }
+
+            section#content table td {
                 vertical-align: top;
             }
 
