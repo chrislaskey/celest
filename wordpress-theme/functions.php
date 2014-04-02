@@ -577,6 +577,28 @@
     }
 
 
+//User group display functions
+
+    function create_user_group_entry($user){
+
+        $image_dir = ( $user->image == 1 ) ? $user->user_id : 'default';
+        $image = '<div class="image"><img alt="'.$user->screen_name.'" src="/assets/users/'.$image_dir.'/width_96.jpg" width="96"/></div>';
+
+        if( ! empty($user->personal_website) ) {
+            $name = '<span class="name"><a href="'.$user->personal_website.'"><strong>'.$user->screen_name.'</strong></a></span>';
+        }else{
+            $name = '<span class="name"><strong>'.$user->screen_name.'</strong></span>';
+        }
+        $organization = '<span class="organization">'.$user->organization.'</span>';
+        $title = '<span class="title">'.nl2br($user->title).'</span>';
+
+        $text = '<div class="text">'.$name.$organization.$title.'</div>';
+
+        return $image.$text;
+    
+    }
+
+
 //Presentation display functions
 
     function create_conference_presentation($pres){
