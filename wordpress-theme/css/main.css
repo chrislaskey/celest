@@ -375,6 +375,16 @@ section#content blockquote {
         margin-bottom: 0px;
     }
 
+section#content .align-left {
+    float: left;
+    margin: 0px 1em 1em 0px;
+}
+
+section#content .align-right {
+    float: right;
+    margin: 0px 0px 1em 1em;
+}
+
 
     /* Our People Section
     ------------------------------------------------------------------------ */
