@@ -340,7 +340,13 @@ section#content table {
     width: 100%;
 }
 
-    section#content table tr.even{
+    section#content table th {
+        font-family: 'Avenir Medium', 'Avenir', 'Helvetica', sans-serif;
+        font-weight: normal;
+        text-align: left;
+    }
+
+    section#content table tr.even {
         background: #f4fbff;
     }
 
