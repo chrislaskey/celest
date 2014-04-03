@@ -147,7 +147,7 @@ div#top-sections-container {
             #nav li a.news { width: 85px; }
             #nav li a.contact { width: 90px; }
 
-            @media only screen and (min-width: 768px) and (max-width: 1040px)  {
+            @media only screen and (min-width: 768px) and (max-width: 1040px) {
                 #nav li a { font-size: 12px; }
                 #nav li a.home { width: 56px; }
                 #nav li a.about-us { width: 81px; }
@@ -159,7 +159,7 @@ div#top-sections-container {
                 #nav li a.contact { width: 56px; }
             }
 
-            @media only screen and (max-width: 768px)  {
+            @media only screen and (max-width: 768px) {
                 #nav { display: none; }
             }
 
@@ -174,7 +174,7 @@ div#top-sections-container {
         width: 200px;
     }
 
-    @media only screen and (max-width: 768px)  {
+    @media only screen and (max-width: 768px) {
         header { background: rgba(3, 16, 35, 0.20); border-bottom: 1px solid #224778; }
         #nav-mobile { display: block; }
     }
@@ -212,13 +212,13 @@ div#logo-subheader {
         font: 20px/23px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
     }
 
-    @media only screen and (min-width: 768px) and (max-width: 1040px)  {
+    @media only screen and (min-width: 768px) and (max-width: 1040px) {
         div#logo-subheader { width: 520px; }
         span#subheader-celest { font-size: 15px; line-height: 16px; }
         span#subheader-nsf { font-size: 15px; line-height: 15px; }
     }
 
-    @media only screen and (max-width: 768px)  {
+    @media only screen and (max-width: 768px) {
         div#logo-content { padding: 42px 0px 40px 0px; }
         a#logo { width: 100%; }
         div#logo-subheader { display: none; }
@@ -236,7 +236,7 @@ section#sidebar h3 {
     text-transform: uppercase;
 }
 
-    @media only screen and (max-width: 768px)  {
+    @media only screen and (max-width: 768px) {
         section#sidebar h3 {
             margin-bottom: 40px;
         }
@@ -297,7 +297,7 @@ section#content h1 {
     margin: -2px 0px 34px 0px;
 }
 
-    @media only screen and (max-width: 768px)  {
+    @media only screen and (max-width: 768px) {
         section#content h1 {
             font-size: 30px;
             margin-bottom: 24px;
@@ -451,17 +451,17 @@ section#content blockquote {
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 20px;
     }
-        
+
         .file-type-doc,
         .file-type-docx {
             background: url('../images/icon-doc.png') top left no-repeat;
         }
-        
+
         .file-type-jpg,
         .file-type-jpeg {
             background: url('../images/icon-jpg.png') top left no-repeat;
         }
-        
+
         .file-type-pdf {
             background: url('../images/icon-pdf.png') top left no-repeat;
         }
@@ -517,7 +517,7 @@ section#content blockquote {
         font: 14px/14px 'Avenir Medium', 'Avenir', 'Helvetica', sans-serif;
         text-transform: uppercase;
     }
-    
+
     .nav-below {
         margin: 1em 0px 0.5em 0px;
     }
@@ -551,7 +551,7 @@ section#news-footer-articles {
     section#news-footer-articles article:first-child { margin-left: 0px; }
     section#news-footer-articles article:last-child { margin-right: 0px; }
 
-        @media only screen and (min-width: 768px) and (max-width: 1040px)  {
+        @media only screen and (min-width: 768px) and (max-width: 1040px) {
             section#news-footer-articles { margin: 0px 40px; }
 
             section#news-footer-articles article {
@@ -561,7 +561,7 @@ section#news-footer-articles {
             }
         }
 
-        @media only screen and (max-width: 768px)  {
+        @media only screen and (max-width: 768px) {
             section#news-footer-articles { margin: 0px; }
             section#news-footer-articles article { margin-left: 0px; margin-right: 0px; width: 100%; }
         }
@@ -608,11 +608,11 @@ a#nsf-footer {
         font-family: 'Avenir Heavy', 'Avenir', 'Helvetica', sans-serif;
     }
 
-    @media only screen and (min-width: 768px) and (max-width: 1040px)  {
+    @media only screen and (min-width: 768px) and (max-width: 1040px) {
         a#nsf-footer { font-size: 24px; padding-left: 40px; }
     }
 
-    @media only screen and (max-width: 768px)  {
+    @media only screen and (max-width: 768px) {
         a#nsf-footer { font-size: 18px; line-height: 33px; padding-left: 40px; }
         a#nsf-footer span.highlight { display: block; }
     }
