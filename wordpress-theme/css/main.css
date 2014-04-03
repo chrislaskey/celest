@@ -408,14 +408,19 @@ section#content blockquote {
 
             ul.user-group .image {
                 float: left;
-                width: 110px;
+                margin-right: 2%;
+                width: 16%;
             }
 
             ul.user-group .text {
                 float: left;
-                width: 555px;
-                max-width: 100%;
+                width: 82%;
             }
+
+                @media only screen and (max-width: 1040px) {
+                    ul.user-group .image { margin-right: 3%; width: 20%; }
+                    ul.user-group .text { width: 77%; }
+                }
 
                 ul.user-group .text span {
                     display: block;
