@@ -429,6 +429,15 @@ section#content blockquote {
                         font: 14px/20px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
                     }
 
+    section#content table.alumni {
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+        section#content table.alumni th {
+            padding: 0px 10px;
+        }
+
 
     /* Our Work Section
     ------------------------------------------------------------------------ */
