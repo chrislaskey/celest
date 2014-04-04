@@ -8,54 +8,68 @@
  */
 ?><?php include(TEMPLATEPATH.'/header.php'); ?>
 
-        <?php the_post(); ?>
+    <section id="main" class="container clearfix">
 
-        <section id="content" <?php post_class('page'); ?>>
+        <section id="sidebar" class="five columns alpha">
 
-            <h1 class="title page_title"><?php the_title(); ?></h1>
+            <?php include(TEMPLATEPATH.'/sidebar.php'); ?>
 
-            <div class="post_content">
+        </section>
 
-                <?php the_content(); ?>
+        <section id="content-container" class="eleven columns omega">
 
-                <?php
+            <?php the_post(); ?>
 
-                    $db_type_from_uri = $uri[2] == 'books' ? 'book' : 'peer';
-                    $year = get_post_meta($post->ID, 'year', TRUE);
+            <section id="content" <?php post_class('page'); ?>>
 
-                    if( ! $year ){
+                <h1 class="title page_title"><?php the_title(); ?></h1>
 
-                        echo '<p>Currently there are no CELEST Publications to display for the specified time period.</p>';
+                <div class="post_content">
 
-                    }else{
+                    <?php the_content(); ?>
 
-                        $data = get_api_data('/api/our-work/publications/'.$db_type_from_uri.'/by-year/'.$year);
+                    <?php
 
-                        if( isset($data->publications) && count($data->publications > 0) ){
+                        $db_type_from_uri = $uri[2] == 'books' ? 'book' : 'peer';
+                        $year = get_post_meta($post->ID, 'year', TRUE);
 
-                            if( $type == 'book' ){ $printer = 'create_book_publication'; }
-                            else{ $printer = 'create_peer_publication'; }
-
-                            echo '<ol class="our-work-list publications '.$db_type_from_uri.'-publications">';
-
-                            foreach($data->publications as $pub){
-                                echo '<li>'.$printer($pub).'</li>';
-                            }
-
-                            echo '</ol>';
-
-                        }else{
+                        if( ! $year ){
 
                             echo '<p>Currently there are no CELEST Publications to display for the specified time period.</p>';
 
+                        }else{
+
+                            $data = get_api_data('/api/our-work/publications/'.$db_type_from_uri.'/by-year/'.$year);
+
+                            if( isset($data->publications) && count($data->publications > 0) ){
+
+                                if( $type == 'book' ){ $printer = 'create_book_publication'; }
+                                else{ $printer = 'create_peer_publication'; }
+
+                                echo '<ol class="our-work-list publications '.$db_type_from_uri.'-publications">';
+
+                                foreach($data->publications as $pub){
+                                    echo '<li>'.$printer($pub).'</li>';
+                                }
+
+                                echo '</ol>';
+
+                            }else{
+
+                                echo '<p>Currently there are no CELEST Publications to display for the specified time period.</p>';
+
+                            }
+
                         }
 
-                    }
+                    ?>
 
-                ?>
+                </div>
 
-            </div>
+            </section>
 
         </section>
+
+    </section>
 
 <?php include(TEMPLATEPATH.'/footer.php'); ?>
