@@ -8,54 +8,68 @@
  */
 ?><?php include(TEMPLATEPATH.'/header.php'); ?>
 
-        <?php the_post(); ?>
+    <section id="main" class="container clearfix">
 
-        <section id="content" <?php post_class('page'); ?>>
+        <section id="sidebar" class="five columns alpha">
 
-            <h1 class="title page_title"><?php the_title(); ?></h1>
+            <?php include(TEMPLATEPATH.'/sidebar.php'); ?>
 
-            <div class="post_content">
+        </section>
 
-                <?php the_content(); ?>
+        <section id="content-container" class="eleven columns omega">
 
-                <?php
+            <?php the_post(); ?>
 
-                    $type = $uri[2];
-                    $year = get_post_meta($post->ID, 'year', TRUE);
+            <section id="content" <?php post_class('page'); ?>>
 
-                    if( ! $year ){
+                <h1 class="title page_title"><?php the_title(); ?></h1>
 
-                        echo '<p>Currently there are no CELEST Presentations to display for the specified time period.</p>';
+                <div class="post_content">
 
-                    }else{
+                    <?php the_content(); ?>
 
-                        $data = get_api_data('/api/our-work/presentations/'.$type.'/by-year/'.$year);
+                    <?php
 
-                        if( isset($data->presentations) && count($data->presentations > 0) ){
+                        $type = $uri[2];
+                        $year = get_post_meta($post->ID, 'year', TRUE);
 
-                            if( $type == 'conference' ){ $printer = 'create_conference_presentation'; }
-                            else{ $printer = 'create_nonconference_presentation'; }
-
-                            echo '<ol class="our-work-list presentations '.$type.'-presentations">';
-
-                            foreach($data->presentations as $pres){
-                                echo '<li>'.$printer($pres).'</li>';
-                            }
-
-                            echo '</ol>';
-
-                        }else{
+                        if( ! $year ){
 
                             echo '<p>Currently there are no CELEST Presentations to display for the specified time period.</p>';
 
+                        }else{
+
+                            $data = get_api_data('/api/our-work/presentations/'.$type.'/by-year/'.$year);
+
+                            if( isset($data->presentations) && count($data->presentations > 0) ){
+
+                                if( $type == 'conference' ){ $printer = 'create_conference_presentation'; }
+                                else{ $printer = 'create_nonconference_presentation'; }
+
+                                echo '<ol class="our-work-list presentations '.$type.'-presentations">';
+
+                                foreach($data->presentations as $pres){
+                                    echo '<li>'.$printer($pres).'</li>';
+                                }
+
+                                echo '</ol>';
+
+                            }else{
+
+                                echo '<p>Currently there are no CELEST Presentations to display for the specified time period.</p>';
+
+                            }
+
                         }
 
-                    }
+                    ?>
 
-                ?>
+                </div>
 
-            </div>
+            </section>
 
         </section>
+
+    </section>
 
 <?php include(TEMPLATEPATH.'/footer.php'); ?>
