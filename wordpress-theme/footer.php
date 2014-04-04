@@ -6,9 +6,6 @@
  */
 ?>
 
-                </section>
-            </section>
-
         </div>
     </div>
 
