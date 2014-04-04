@@ -8,57 +8,71 @@
  */
 ?><?php include(TEMPLATEPATH.'/header.php'); ?>
 
-        <?php the_post(); ?>
+    <section id="main" class="container clearfix">
 
-        <section id="content" <?php post_class('page'); ?>>
+        <section id="sidebar" class="five columns alpha">
 
-            <h1 class="title page_title"><?php the_title(); ?></h1>
+            <?php include(TEMPLATEPATH.'/sidebar.php'); ?>
 
-            <div class="post_content">
+        </section>
 
-                <?php the_content(); ?>
+        <section id="content-container" class="eleven columns omega">
 
-                <?php
+            <?php the_post(); ?>
 
-                    $year = get_post_meta($post->ID, 'year', TRUE); 
+            <section id="content" <?php post_class('page'); ?>>
 
-                    if( ! $year ){
+                <h1 class="title page_title"><?php the_title(); ?></h1>
 
-                        echo '<p>Currently there are no CELEST Honors or Awards to display for the specified time period.</p>';
+                <div class="post_content">
 
-                    }else{
+                    <?php the_content(); ?>
 
-                        $data = get_api_data('/api/our-work/honors-and-awards/by-year/'.$year);
+                    <?php
 
-                        if( isset($data->honors) && !empty($data->honors) ){
+                        $year = get_post_meta($post->ID, 'year', TRUE); 
 
-                            $authors = '';
-
-                            foreach($data->honors as $honor){
-
-                                if( $authors != $honor->authors ){
-                                    if( $authors != NULL ){ echo '</ul>'; }
-                                    echo '<h2>'.$honor->authors.'</h2>';
-                                    echo '<ul class="our-work-list honors">';
-                                    $authors = $honor->authors;
-                                }
-
-                                echo '<li>'.$honor->description.'</li>';
-
-                            }
-
-                        }else{
+                        if( ! $year ){
 
                             echo '<p>Currently there are no CELEST Honors or Awards to display for the specified time period.</p>';
 
+                        }else{
+
+                            $data = get_api_data('/api/our-work/honors-and-awards/by-year/'.$year);
+
+                            if( isset($data->honors) && !empty($data->honors) ){
+
+                                $authors = '';
+
+                                foreach($data->honors as $honor){
+
+                                    if( $authors != $honor->authors ){
+                                        if( $authors != NULL ){ echo '</ul>'; }
+                                        echo '<h2>'.$honor->authors.'</h2>';
+                                        echo '<ul class="our-work-list honors">';
+                                        $authors = $honor->authors;
+                                    }
+
+                                    echo '<li>'.$honor->description.'</li>';
+
+                                }
+
+                            }else{
+
+                                echo '<p>Currently there are no CELEST Honors or Awards to display for the specified time period.</p>';
+
+                            }
+
                         }
 
-                    }
+                    ?>
 
-                ?>
+                </div>
 
-            </div>
+            </section>
 
         </section>
+
+    </section>
 
 <?php include(TEMPLATEPATH.'/footer.php'); ?>
