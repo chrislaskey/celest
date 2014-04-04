@@ -8,53 +8,67 @@
  */
 ?><?php include(TEMPLATEPATH.'/header.php'); ?>
 
-        <?php the_post(); ?>
+    <section id="main" class="container clearfix">
 
-        <section id="content" <?php post_class('page'); ?>>
+        <section id="sidebar" class="five columns alpha">
 
-            <h1 class="title page_title"><?php the_title(); ?></h1>
+            <?php include(TEMPLATEPATH.'/sidebar.php'); ?>
 
-            <div class="post_content">
+        </section>
 
-                <?php the_content(); ?>
+        <section id="content-container" class="eleven columns omega">
 
-                <?php
+            <?php the_post(); ?>
 
-                    $year = get_post_meta($post->ID, 'year', TRUE); 
+            <section id="content" <?php post_class('page'); ?>>
 
-                    if( ! $year ){
+                <h1 class="title page_title"><?php the_title(); ?></h1>
 
-                        echo '<p>There are currently no highlights to display for the given year.</p>';
+                <div class="post_content">
 
-                    }else{
+                    <?php the_content(); ?>
 
-                        $data = get_api_data('/api/our-work/research-and-outreach-highlights/by-year/'.$year);
+                    <?php
 
-                        if( isset($data->highlights) && !empty($data->highlights) ){
+                        $year = get_post_meta($post->ID, 'year', TRUE); 
 
-                            $highlights = array();
-                            foreach($data->highlights as $highlight){
-                                $content = $highlight->title;
-                                if( $highlight->file_path ){
-                                    $content .= '<a class="external file-icon file-type-'.$highlight->file_type.'" href="'.$highlight->file_path.'">Download as PDF</a>';
-                                }
-
-                                $highlights[] = '<li>'.$content.'</li>';
-                            }
-
-                            echo '<ol class="our-work-list highlights">'.implode($highlights).'</ol>';
-
-                        }else{
+                        if( ! $year ){
 
                             echo '<p>There are currently no highlights to display for the given year.</p>';
 
+                        }else{
+
+                            $data = get_api_data('/api/our-work/research-and-outreach-highlights/by-year/'.$year);
+
+                            if( isset($data->highlights) && !empty($data->highlights) ){
+
+                                $highlights = array();
+                                foreach($data->highlights as $highlight){
+                                    $content = $highlight->title;
+                                    if( $highlight->file_path ){
+                                        $content .= '<a class="external file-icon file-type-'.$highlight->file_type.'" href="'.$highlight->file_path.'">Download as PDF</a>';
+                                    }
+
+                                    $highlights[] = '<li>'.$content.'</li>';
+                                }
+
+                                echo '<ol class="our-work-list highlights">'.implode($highlights).'</ol>';
+
+                            }else{
+
+                                echo '<p>There are currently no highlights to display for the given year.</p>';
+
+                            }
+
                         }
+                    ?>
 
-                    }
-                ?>
+                </div>
 
-            </div>
+            </section>
 
         </section>
+
+    </section>
 
 <?php include(TEMPLATEPATH.'/footer.php'); ?>
