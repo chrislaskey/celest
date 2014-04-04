@@ -12,7 +12,7 @@
  * @since 3.0.0
  */
 ?>
-    
+
     <?php if( !have_posts() ): //If there are no posts to display, such as an empty archive page ?>
         
         <div class="post">
