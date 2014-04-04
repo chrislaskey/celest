@@ -9,41 +9,54 @@
 
 ?><?php include(TEMPLATEPATH.'/header.php'); ?>
 
-        <?php the_post(); ?>
+    <section id="main" class="container clearfix">
 
-        <section id="content" <?php post_class('page'); ?>>
+        <section id="sidebar" class="five columns alpha">
 
-            <h1 class="title page_title"><?php the_title(); ?></h1>
-
-            <div class="post_content">
-
-                <?php the_content(); ?>
-
-                <?php
-
-                    $group = get_post_meta($post->ID, 'group', TRUE);	
-                    $data = get_api_data('/api/our-people/groups/'.$group);
-
-                    if( empty($data->users) ){
-
-                        echo '<p>There are currently no members to show.</p>';
-
-                    } else {
-                    
-                        echo '<ul class="user-group '.$group.'">';
-
-                        foreach($data->users as $user){
-                            echo '<li>'.create_user_group_entry($user).'</li>';
-                        }
-                        
-                        echo '</ul>';
-                    }
-
-                ?>
-
-            </div>
+            <?php include(TEMPLATEPATH.'/sidebar.php'); ?>
 
         </section>
 
-<?php include(TEMPLATEPATH.'/footer.php'); ?>
+        <section id="content-container" class="eleven columns omega">
 
+            <?php the_post(); ?>
+
+            <section id="content" <?php post_class('page'); ?>>
+
+                <h1 class="title page_title"><?php the_title(); ?></h1>
+
+                <div class="post_content">
+
+                    <?php the_content(); ?>
+
+                    <?php
+
+                        $group = get_post_meta($post->ID, 'group', TRUE);	
+                        $data = get_api_data('/api/our-people/groups/'.$group);
+
+                        if( empty($data->users) ){
+
+                            echo '<p>There are currently no members to show.</p>';
+
+                        } else {
+                        
+                            echo '<ul class="user-group '.$group.'">';
+
+                            foreach($data->users as $user){
+                                echo '<li>'.create_user_group_entry($user).'</li>';
+                            }
+                            
+                            echo '</ul>';
+                        }
+
+                    ?>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </section>
+
+<?php include(TEMPLATEPATH.'/footer.php'); ?>
