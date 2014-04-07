@@ -11,6 +11,7 @@
 
 
 //Wordpress Overrides and Content Registrations
+    remove_action('wp_head', 'wp_generator');
     remove_filter('the_content', 'wptexturize');
     add_shortcode('wp_caption', 'cl_img_caption_shortcode');
     add_shortcode('caption', 'cl_img_caption_shortcode');
