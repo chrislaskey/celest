@@ -32,7 +32,17 @@
         'id' => 'sidebar-widget-area',
         'description' => 'The primary sidebar widget area',
         'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-        'after_widget' => "</li>",
+        'after_widget' => '</li>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name' => 'Homepage Widget Area',
+        'id' => 'homepage-widget-area',
+        'description' => 'The primary homepage widget area',
+        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+        'after_widget' => '</li>',
         'before_title' => '<h3 class="widget-title">',
         'after_title' => '</h3>',
     ));
