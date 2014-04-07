@@ -312,6 +312,27 @@ section#homepage-container {
                 color: #98c0e2 !important;
             }
 
+    .mobile-homepage {
+        color: #fff;
+        display: none;
+        margin: -20px 0px -30px 0px;
+        text-align: center;
+    }
+
+        .mobile-homepage p:last-child {
+            margin-bottom: 0px;
+        }
+
+        .mobile-homepage a {
+            color: #029eff;
+            font-family: 'Avenir Medium', 'Avenir', 'Helvetica', sans-serif;
+        }
+
+        @media only screen and (max-width: 768px) {
+            section#homepage-container div:first-child { display: none; }
+            .mobile-homepage { display: block; }
+        }
+
 
 /* Content
 ============================================================================ */
