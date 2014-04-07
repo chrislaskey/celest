@@ -645,3 +645,17 @@ footer .universities {
         footer .universities a: hover {
             text-decoration: underline;
         }
+
+
+/* WordPress Specific Code
+============================================================================ */
+
+@media print {
+    #wpadminbar { display:none; }
+}
+
+@media screen {
+    body.logged-in.admin-bar {
+        margin-top: 28px !important;
+    }
+}
