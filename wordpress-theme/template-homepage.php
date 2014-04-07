@@ -10,6 +10,14 @@
 
 ?><?php include(TEMPLATEPATH.'/header.php'); ?>
 
+    <?php if( is_active_sidebar('homepage-widget-area') ): ?>
+
+        <ul class="widget-area">
+            <?php dynamic_sidebar('homepage-widget-area'); ?>
+        </ul>
+
+    <?php endif; ?>
+
     <section id="homepage-container" class="container">
 
         <?php the_post(); ?>
