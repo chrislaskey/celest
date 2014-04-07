@@ -29,8 +29,11 @@
         <script src="<?php echo CL_TEMPLATEPATH; ?>/javascript/respond.min.js"></script>
     <![endif]-->
 
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
     <!-- Start WP Head -->
-    <!-- <?php //wp_head(); ?> -->
+    <?php //wp_head(); ?>
     <!-- End WP Head -->
 
     <!-- Page content generated on <?php echo date("F j, Y, g:i:s a", @mktime()); ?> -->
