@@ -288,6 +288,31 @@ ul#sidenav  {
             }
 
 
+/* Homepage
+============================================================================ */
+
+section#homepage-container {
+    margin: 0px auto;
+    max-width: 1040px;
+}
+
+    section#homepage-container div:first-child {
+
+    }
+
+        .smart-slider-canvas-inner div {
+            border-radius: 2px;
+        }
+
+        section#homepage-container h1:first-child a {
+            font-family: 'Avenir Light', Helvetica, sans-serif !important;
+        }
+
+            section#homepage-container h1 a:hover {
+                color: #98c0e2 !important;
+            }
+
+
 /* Content
 ============================================================================ */
 
