@@ -36,6 +36,14 @@
     <?php //wp_head(); ?>
     <!-- End WP Head -->
 
+    <script>
+        $(function(){
+           $('section#nav-mobile select').change(function(){
+                window.location = $(this).attr('value');
+            });
+        });
+    </script>
+
     <!-- Page content generated on <?php echo date("F j, Y, g:i:s a", @mktime()); ?> -->
 
 </head>
