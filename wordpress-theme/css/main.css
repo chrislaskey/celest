@@ -85,6 +85,10 @@ div#top-sections-container {
         padding: 60px 0px 30px 0px;
     }
 
+        @media only screen and (max-width: 768px) {
+            section#main { padding: 40px 0px 20px 0px; }
+        }
+
         section#sidebar {
 
         }
@@ -96,6 +100,10 @@ div#top-sections-container {
             section#content {
                 color: #2d3c51;
                 margin: 0px 15px 0px 15px;
+            }
+
+            @media only screen and (max-width: 768px) {
+                section#content { margin: 0px 30px 0px 30px; }
             }
 
     section#news-footer {
@@ -231,23 +239,25 @@ div#logo-subheader {
 section#sidebar h3 {
     color: #2e3a4a;
     letter-spacing: 2px;
-    margin: 0px 40px 44px 40px;
+    margin: 0px 40px 54px 40px;
     font: 16px/16px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
     text-transform: uppercase;
 }
 
     @media only screen and (max-width: 768px) {
-        section#sidebar h3 {
-            margin-bottom: 40px;
-        }
+        section#sidebar h3 { margin: 0px 30px 24px 30px; }
     }
 
-ul#sidenav  {
+ul#sidenav {
     font: 16px/20px 'Avenir Roman', 'Avenir', 'Helvetica', sans-serif;
     list-style: none;
-    margin: 0px 15px 30px 40px;
+    margin: -10px 15px 30px 40px;
     padding: 0px;
 }
+
+    @media only screen and (max-width: 768px) {
+        ul#sidenav { margin: 0px 30px 0px 30px; }
+    }
 
     ul#sidenav li {
         border-bottom: 1px solid #e3e3e3;
@@ -347,7 +357,7 @@ section#content h1 {
         section#content h1 {
             font-size: 30px;
             margin-bottom: 24px;
-            margin-top: 60px;
+            margin-top: 40px;
         }
     }
 

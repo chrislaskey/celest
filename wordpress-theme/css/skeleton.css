@@ -181,7 +181,7 @@
     /* Note: Design for a width of 480px */
 
     @media only screen and (min-width: 480px) and (max-width: 767px) {
-        .container { width: 420px; }
+        .container { width: 440px; }
         .container .columns,
         .container .column { margin: 0; }
 
