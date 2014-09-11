@@ -153,7 +153,7 @@ div#top-sections-container {
             #nav li a.outreach-and-impacts { width: 195px; }
             #nav li a.events-and-programs { width: 190px; }
             #nav li a.news { width: 85px; }
-            #nav li a.contact { width: 90px; }
+            #nav li a.login { width: 90px; }
 
             @media only screen and (min-width: 768px) and (max-width: 1040px) {
                 #nav li a { font-size: 12px; }
@@ -164,7 +164,7 @@ div#top-sections-container {
                 #nav li a.outreach-and-impacts { width: 161px; }
                 #nav li a.events-and-programs { width: 156px; }
                 #nav li a.news { width: 51px; }
-                #nav li a.contact { width: 56px; }
+                #nav li a.login { width: 56px; }
             }
 
             @media only screen and (max-width: 768px) {
