@@ -31,7 +31,7 @@
 
                     <?php
 
-                        $group = get_post_meta($post->ID, 'group', TRUE);	
+                        $group = get_post_meta($post->ID, 'group', TRUE);
                         $data = get_api_data('/api/our-people/groups/'.$group);
 
                         if( empty($data->users) ){
@@ -39,13 +39,13 @@
                             echo '<p>There are currently no members to show.</p>';
 
                         } else {
-                        
+
                             echo '<ul class="user-group '.$group.'">';
 
                             foreach($data->users as $user){
                                 echo '<li>'.create_user_group_entry($user).'</li>';
                             }
-                            
+
                             echo '</ul>';
                         }
 

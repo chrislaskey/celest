@@ -391,6 +391,14 @@ section#content img {
     max-width: 100%;
 }
 
+section#content ul {
+
+}
+
+    section#content ul li {
+        font: 16px/24px 'Avenir Book', 'Avenir', 'Helvetica', sans-serif;
+    }
+
 section#content table {
     margin: 1em 0px;
     width: 100%;
@@ -419,6 +427,38 @@ section#content table {
             section#content table td {
                 vertical-align: top;
             }
+
+section#content form {
+    font: 15px/20px 'Avenir Book', 'Avenir', 'Helvetica', sans-serif;
+}
+
+    section#content form select {
+        background: #fff;
+        border: 1px solid #ccc;
+        float: right;
+        font: 15px/20px 'Avenir Book', 'Avenir', 'Helvetica', sans-serif;
+    }
+
+    section#content form input {
+        background: #fff;
+        border: 1px solid #ccc;
+        float: right;
+        font: 15px/20px 'Avenir Book', 'Avenir', 'Helvetica', sans-serif;
+        padding: 3px;
+    }
+
+    section#content form textarea {
+        background: #fff;
+        border: 1px solid #ccc;
+        display: block;
+        font: 15px/22px 'Avenir Book', 'Avenir', 'Helvetica', sans-serif;
+        height: 6em;
+        width: 100%;
+    }
+
+        section#content form table tr td {
+            padding: 0.25em 0px;
+        }
 
 section#content blockquote {
     border-left: 5px solid #e3eaef;
