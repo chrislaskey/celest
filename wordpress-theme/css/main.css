@@ -471,6 +471,22 @@ section#content blockquote {
         margin-bottom: 0px;
     }
 
+    section#content blockquote.message {
+        padding: 5px 30px;
+    }
+
+        section#content blockquote.message-type-,
+        section#content blockquote.message-type-undefined,
+        section#content blockquote.message-type-error {
+            background: #ffe8e8;
+            border-left: 5px solid #e2b3b3;
+        }
+
+        section#content blockquote.message-type-success {
+            background: #e8ffec;
+            border-left: 5px solid #b7e2b3;
+        }
+
 section#content .align-left {
     float: left;
     margin: 0px 1em 1em 0px;

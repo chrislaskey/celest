@@ -306,21 +306,20 @@
 
                             summer.url = '/api/summer-program/application';
                             summer.form = $('form.summer_program_application');
-                            summer.data = summer.form.serialize();
                             summer.messages = Messenger('#message-container');
 
                             summer.form.on('submit', function(e){
 
-                                console.log(summer.data)
-
                                 $.ajax({
                                     type: "POST",
                                     url: summer.url,
-                                    data: summer.data,
+                                    data: summer.form.serialize(),
                                     success: function(data){
-                                        var result = $.parseJSON(data)
-                                        console.log(result)
-                                        summer.messages.show(result.type, result.message);
+                                        var result = $.parseJSON(data);
+                                        summer.messages.show(result.status, result.message);
+                                        if( result.status == 'success' ){
+                                            summer.form.hide();
+                                        }
                                         scrollToAnchor('online-application');
                                     }
                                 });
@@ -334,7 +333,7 @@
                                 var container = $(container_target);
 
                                 function show_message(type, text){
-                                    var message = '<div class="message message-type-' + type + '">' + text + '</div>';
+                                    var message = '<blockquote class="message message-type-' + type + '">' + text + '</blockquote>';
                                     container.html(message) 
                                 }
                                 
